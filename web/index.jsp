@@ -1,22 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="image/cd.png" rel="shortcut icon" type="image/x-icon" />
+        <link href="image/mobile.png" rel="shortcut icon" type="image/x-icon" />
         <title>โปรแกรมบริหารร้านโทรศัพท์มือถือ</title>
         <meta name="description" content=""/>
         <meta name="author" content=""/>
-        <!-- mobile viewport optimisation -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- stylesheets -->
-        <link rel="stylesheet" href="Gumby-master/css/gumby.css" type="text/css"/>
-        <link rel="stylesheet" href="Gumby-master/fonts/icons/entypo.eot" type="text/css" />
-        <link rel="stylesheet" href="Gumby-master/fonts/icons/entypo.ttf" type="text/css"/>
-        <link rel="stylesheet" href="Gumby-master/fonts/icons/entypo.woff" type="text/css"/>
-        <link rel="stylesheet" href="Gumby-master/sass/var/_settings.scss" type="text/css"/>
-        <link rel="stylesheet" href=Gumby-master/css/style.css" type="text/css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <script type="text/javascript" src="jquery/jquery.js"></script>
         <script type="text/javascript">
@@ -26,50 +19,60 @@
                 $("#menuLeft").load("menuLeft.jsp");
             });
         </script>
+
+
     </head>
     <body >
-        <!--import header-->
-        <div class="row">
-            <div class="twelve columns">
-                <p>12 columns</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="four columns">
-              <nav id="sidebar-nav-holder" class="vertical-nav unfixed" gumby-fixed="top" gumby-pin="[data-target='icons']" style="top: 0px; left: 124.5px; width: 300px;">
-            <ul id="sidebar-nav">
-              
-                <li class="active">
-                  <a href="#design-styles" class="skip" gumby-update="" gumby-duration="600" gumby-goto="[data-target='design-styles']">หน้าหลัก</a>
-                </li>
-                
-                <li>
-                  <a href="#buttons" class="skip" gumby-update="" gumby-duration="600" gumby-goto="[data-target='buttons']">ขาย</a>
-                </li>
-                
-                <li>
-                  <a href="#indicators" class="skip" gumby-update="" gumby-duration="600" gumby-goto="[data-target='indicators']">สต๊อก</a>
-                </li>
-                
-                <li class="">
-                  <a href="#forms" class="skip" gumby-update="" gumby-duration="600" gumby-goto="[data-target='forms']">รายงาน</a>
-                </li>
-                
-                <li class="">
-                  <a href="#navigation" class="skip" gumby-update="" gumby-duration="600" gumby-goto="[data-target='navigation']">ตั้งค่า</a>
-                </li>
-                
-              
-                
-             
-                
-            </ul>
-          </nav>
-            </div>
-            <div class="eight columns">
-                <p>6 columns</p>
-            </div>
-        </div>
+        <div class="container">
+            <div class="row" style="margin-top: 10px"><div class="col-md-12"><div class="alert alert-info" style="color: black"><h3>ระบบบริหารร้านโทรศัพท์มือถือ</h3></div></div></div>
 
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading" style="font-weight: bold">เมนูหลัก</div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#" style="color: #000">ขาย</a></li>
+                                <li><a href="#" style="color: #000">คลังสินค้า</a></li>
+                                <li><a href="#" style="color: #000">รายงาน</a></li>
+                                <li><a href="UnitIndex" style="color: #000">ตั้งค่าพื้นฐาน</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                 
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading" style="font-weight: bold">เมนูอื่นๆ</div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#" style="color: #000">เครื่องมือเสริม</a></li>
+                                <li><a href="#" style="color: #000">ตั้งค่าทั่วไป</a></li>
+                                <li><a href="#" style="color: #000">คู่มือการใช้งาน</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                     <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading" style="font-weight: bold">เมนูผู้ใช้งาน</div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#" style="color: #000">ความเป็นส่วนตัว</a></li>
+                                <li><a href="UnitIndex" style="color: #000">ออกจากระบบ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="panel panel-default">
+                        <s:if test="url!= null">
+                            <jsp:include page="${url}" />
+                        </s:if>
+                    </div>
+                </div> 
+            </div>
+            <div class="row"><div class="col-md-12"><div class="alert alert-info" style="color: black">Copyright © 20xx xxx.com All rights reserved. Co., Ltd. www.xxx.co.th</div></div></div>
+        </div>
+        <script src="js/bootstrap.min.js"></script>
     </body>
 </html>

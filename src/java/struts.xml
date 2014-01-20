@@ -6,6 +6,7 @@
     <include file="example.xml"/>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
+        <!--company-->
         <action name="HomeIndex" class="SaleCD.action.CompanyAction" >
             <result name="SUCCESS" >index.jsp</result>
         </action>
@@ -13,5 +14,24 @@
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/Company.jsp</param>
         </action>
+        
+        <!--unit-->
+        <action name="UnitIndex" class="SaleCD.action.UnitAction" method="index">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/Unit.jsp</param>
+        </action>
+        <action name="UnitSave" class="SaleCD.action.UnitAction" method="save">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/Unit.jsp</param>
+        </action>
+        <action name="UnitEdit" class="SaleCD.action.UnitAction" method="edit">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/Unit.jsp</param>
+        </action>
+        <action name="UnitDelete" class="SaleCD.action.UnitAction" method="delete">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/Unit.jsp</param>
+        </action>
+        
     </package>
 </struts>

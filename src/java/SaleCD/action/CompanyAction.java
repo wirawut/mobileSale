@@ -29,7 +29,10 @@ public class CompanyAction extends IndexAction {
     }
 
     public String index() {
-            companyList = companyModel.list();
-            return "SUCCESS";
+        companyList = companyModel.list();
+        return "SUCCESS";
+    }
+
+    public void save() {
     }
 }
