@@ -22,4 +22,159 @@
         <property column="detail" name="detail" type="string"/>
         <property column="date" name="date" type="date"/>
     </class>
+    
+    <!--level-->
+    <class name="SaleCD.model.LevelModel" table="tb_level">
+        <id column="level_id" name="level_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="level" name="level" type="string"/>
+        <property column="access" name="access" type="string"/>
+        <property column="date_save" name="date_save" type="date"/>
+    </class>
+    
+    <!--header-->
+    <class name="SaleCD.model.HeaderModel" table="tb_header">
+        <id column="header_id" name="header_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="header_font_name" name="header_font_name" type="string"/>
+        <property column="header_font_style" name="header_font_style" type="string"/>
+        <property column="header_font_size" name="header_font_size" type="string"/>
+        <property column="header_font_weight" name="header_font_weight" type="string"/>
+        <property column="header_font_color" name="header_font_color" type="string"/>
+        <property column="header_background_color" name="header_background_color" type="string"/>
+        <property column="header_border_color" name="header_border_color" type="string"/>
+        <property column="header_border_weight" name="header_border_weight" type="string"/>
+        <property column="header_border_style" name="header_border_style" type="string"/>
+    </class>
+    
+    <!--footer-->
+    <class name="SaleCD.model.FooterModel" table="tb_footer">
+        <id column="footer_id" name="footer_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="" name="footer_font_name" type="string"/>
+        <property column="footer_font_style" name="footer_font_style" type="string"/>
+        <property column="footer_font_size" name="footer_font_size" type="string"/>
+        <property column="footer_font_weight" name="footer_font_weight" type="string"/>
+        <property column="footer_font_color" name="footer_font_color" type="string"/>
+        <property column="footer_background_color" name="footer_background_color" type="string"/>
+        <property column="footer_border_color" name="footer_border_color" type="string"/>
+        <property column="footer_border_weight" name="footer_border_weight" type="string"/>
+        <property column="footer_border_style" name="footer_border_style" type="string"/>
+    </class>
+    
+    <!--main_menu-->
+    <class name="SaleCD.model.MainMenuModel" table="tb_main_menu">
+        <id column="main_menu_id" name="main_menu_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="shows" name="shows" type="string"/>
+        <property column="font_name" name="font_name" type="string"/>
+        <property column="font_style" name="font_style" type="string"/>
+        <property column="font_size_header" name="font_size_header" type="string"/>
+        <property column="font_size_detail" name="font_size_detail" type="string"/>
+        <property column="font_weight_header" name="font_weight_header" type="string"/>
+        <property column="font_weight_detail" name="font_weight_detail" type="string"/>
+        <property column="font_color_header" name="font_color_header" type="string"/>
+        <property column="font_color_detail" name="font_color_detail" type="string"/>
+        <property column="background_color_header" name="background_color_header" type="string"/>
+        <property column="background_color_detail" name="background_color_detail" type="string"/>
+        <property column="border_color" name="border_color" type="string"/>
+        <property column="border_weight" name="border_weight" type="string"/>
+        <property column="border_style" name="border_style" type="string"/>
+    </class>
+    
+    <!--other_menu-->
+    <class name="SaleCD.model.OtherMenuModel" table="tb_other_menu">
+        <id column="other_menu_id" name="other_menu_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="shows" name="shows" type="string"/>
+        <property column="font_name" name="font_name" type="string"/>
+        <property column="font_style" name="font_style" type="string"/>
+        <property column="font_size_header" name="font_size_header" type="string"/>
+        <property column="font_size_detail" name="font_size_detail" type="string"/>
+        <property column="font_weight_header" name="font_weight_header" type="string"/>
+        <property column="font_weight_detail" name="font_weight_detail" type="string"/>
+        <property column="font_color_header" name="font_color_header" type="string"/>
+        <property column="font_color_detail" name="font_color_detail" type="string"/>
+        <property column="background_color_header" name="background_color_header" type="string"/>
+        <property column="background_color_detail" name="background_color_detail" type="string"/>
+        <property column="border_color" name="border_color" type="string"/>
+        <property column="border_weight" name="border_weight" type="string"/>
+        <property column="border_style" name="border_style" type="string"/>
+    </class>
+    
+    <!--user_menu-->
+    <class name="SaleCD.model.UserMenuModel" table="tb_user_menu">
+        <id column="user_menu_id" name="user_menu_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="shows" name="shows" type="string"/>
+        <property column="font_name" name="font_name" type="string"/>
+        <property column="font_style" name="font_style" type="string"/>
+        <property column="font_size_header" name="font_size_header" type="string"/>
+        <property column="font_size_detail" name="font_size_detail" type="string"/>
+        <property column="font_weight_header" name="font_weight_header" type="string"/>
+        <property column="font_weight_detail" name="font_weight_detail" type="string"/>
+        <property column="font_color_header" name="font_color_header" type="string"/>
+        <property column="font_color_detail" name="font_color_detail" type="string"/>
+        <property column="background_color_header" name="background_color_header" type="string"/>
+        <property column="background_color_detail" name="background_color_detail" type="string"/>
+        <property column="border_color" name="border_color" type="string"/>
+        <property column="border_weight" name="border_weight" type="string"/>
+        <property column="border_style" name="border_style" type="string"/>
+    </class>
+    
+    <!--content_menu-->
+    <class name="SaleCD.model.ContentMenuModel" table="tb_content_menu">
+        <id column="content_menu_id" name="content_menu_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="shows" name="shows" type="string"/>
+        <property column="font_name" name="font_name" type="string"/>
+        <property column="font_style" name="font_style" type="string"/>
+        <property column="font_size_header" name="font_size_header" type="string"/>
+        <property column="font_size_detail" name="font_size_detail" type="string"/>
+        <property column="font_weight_header" name="font_weight_header" type="string"/>
+        <property column="font_weight_detail" name="font_weight_detail" type="string"/>
+        <property column="font_color_header" name="font_color_header" type="string"/>
+        <property column="font_color_detail" name="font_color_detail" type="string"/>
+        <property column="background_color_header" name="background_color_header" type="string"/>
+        <property column="background_color_detail" name="background_color_detail" type="string"/>
+        <property column="border_color" name="border_color" type="string"/>
+        <property column="border_weight" name="border_weight" type="string"/>
+        <property column="border_style" name="border_style" type="string"/>
+    </class>
+    
+    <!--manageGeneralModel-->
+    <class table="tb_user" name="SaleCD.model.ManageGeneralModel">
+        <id column="user_id" name="user_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="fname" name="fname" type="string"/>
+        <property column="lname" name="lname" type="string"/>
+        <property column="birthdate" name="birthdate" type="date"/>
+        <property column="sex" name="sex" type="string"/>
+        <property column="address" name="address" type="string"/>
+        <property column="email" name="email" type="string"/>
+        <property column="tel" name="tel" type="string"/>
+        <property column="username" name="username" type="string"/>
+        <property column="password" name="password" type="string"/>
+        <property column="image" name="image" type="string"/>
+        <property column="date" name="date" type="date"/>
+        
+        <!--relation fk 8 table-->
+        <many-to-one class="SaleCD.model.HeaderModel" column="header_id" fetch="select" lazy="false" name="headerModel"/>
+        <many-to-one class="SaleCD.model.FooterModel" column="footer_id" fetch="select" lazy="false" name="footerModel"/>
+        <many-to-one class="SaleCD.model.MainMenuModel" column="main_menu_id" fetch="select" lazy="false" name="mainMenuModel"/>
+        <many-to-one class="SaleCD.model.OtherMenuModel" column="other_menu_id" fetch="select" lazy="false" name="otherMenuModel"/>
+        <many-to-one class="SaleCD.model.UserMenuModel" column="user_menu_id" fetch="select" lazy="false" name="usermenuModel"/>
+        <many-to-one class="SaleCD.model.ContentMenuModel" column="content_menu_id" fetch="select" lazy="false" name="contentMenuModel"/>
+        <many-to-one class="SaleCD.model.CompanyModel" column="company_id" fetch="select" lazy="false" name="companyModel"/>
+        <many-to-one class="SaleCD.model.LevelModel" column="level_id" fetch="select" lazy="false" name="levelModel"/>
+    
+    </class>
 </hibernate-mapping>

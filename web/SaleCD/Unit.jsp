@@ -1,16 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<%@taglib prefix="sd" uri="/struts-dojo-tags" %>
 <script>
     $(function() {
-        //ซ่อนตาราง
-        $("#hide").click(function() {
-            $("#show_data").slideUp("slow");
-        });
-        //เเสดงตาราง
-        $("#show").click(function() {
-            $("#show_data").slideDown("slow");
-        });
+       
     });
 </script>
 <div class="panel-heading" style="font-weight: bold">หน่วยนับสินค้า</div>

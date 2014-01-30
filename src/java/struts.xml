@@ -32,6 +32,10 @@
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/Unit.jsp</param>
         </action>
-        
+        <!--generalIndex-->
+        <action name="ManageGeneralIndex" class="SaleCD.action.ManageGeneralAction" method="index">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/ManageGeneral.jsp</param>
+        </action>
     </package>
 </struts>
