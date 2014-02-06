@@ -21,9 +21,9 @@
                 $("#menuLeft").load("menuLeft.jsp");
             });
         </script>
+      
     </head>
     <body >
-
         <div class="container">
             <s:iterator value="manageGeneralList" var="manageGeneralRow">
                 <div class="row" style="margin-top: 10px"><div class="col-md-12"><div class="alert alert-info" style="font-family: ${manageGeneralRow.headerModel.header_font_name};font-style: ${manageGeneralRow.headerModel.header_font_style} ; font-size:  ${manageGeneralRow.headerModel.header_font_size};font-weight: ${manageGeneralRow.headerModel.header_font_weight};color: ${manageGeneralRow.headerModel.header_font_color};background-color: ${manageGeneralRow.headerModel.header_background_color};border-color: ${manageGeneralRow.headerModel.header_border_color};border-style: ${manageGeneralRow.headerModel.header_border_style}">ระบบบริหารร้านโทรศัพท์มือถือ</div></div></div>
@@ -49,7 +49,7 @@
                                 <ul class="nav nav-pills nav-stacked">
                                     <li><a href="#" style="font-size: ${manageGeneralRow.otherMenuModel.font_size_detail};font-weight: ${manageGeneralRow.otherMenuModel.font_weight_detail}; color: ${manageGeneralRow.otherMenuModel.font_color_detail};font-family: ${manageGeneralRow.otherMenuModel.font_name};font-style: ${manageGeneralRow.otherMenuModel.font_style};background-color: ${manageGeneralRow.otherMenuModel.background_color_detail};"><span class="glyphicon glyphicon-cutlery"></span> เครื่องมือเสริม</a></li>
                                     <li><a href="ManageGeneralIndex" style="font-size: ${manageGeneralRow.otherMenuModel.font_size_detail};font-weight: ${manageGeneralRow.otherMenuModel.font_weight_detail}; color: ${manageGeneralRow.otherMenuModel.font_color_detail};font-family: ${manageGeneralRow.otherMenuModel.font_name};font-style: ${manageGeneralRow.otherMenuModel.font_style};background-color: ${manageGeneralRow.otherMenuModel.background_color_detail};"><span class="glyphicon glyphicon-adjust"></span> ตั้งค่าทั่วไป</a></li>
-                                     <li><a href="ManageBoostrapIndex" style="font-size: ${manageGeneralRow.otherMenuModel.font_size_detail};font-weight: ${manageGeneralRow.otherMenuModel.font_weight_detail}; color: ${manageGeneralRow.otherMenuModel.font_color_detail};font-family: ${manageGeneralRow.otherMenuModel.font_name};font-style: ${manageGeneralRow.otherMenuModel.font_style};background-color: ${manageGeneralRow.otherMenuModel.background_color_detail};"><span class="glyphicon glyphicon-bold"></span> ตั้งค่า Bootstrap</a></li>
+                                    <li><a href="ManageBoostrapIndex" style="font-size: ${manageGeneralRow.otherMenuModel.font_size_detail};font-weight: ${manageGeneralRow.otherMenuModel.font_weight_detail}; color: ${manageGeneralRow.otherMenuModel.font_color_detail};font-family: ${manageGeneralRow.otherMenuModel.font_name};font-style: ${manageGeneralRow.otherMenuModel.font_style};background-color: ${manageGeneralRow.otherMenuModel.background_color_detail};"><span class="glyphicon glyphicon-bold"></span> ตั้งค่า Bootstrap</a></li>
                                     <li><a href="#" style="font-size: ${manageGeneralRow.otherMenuModel.font_size_detail};font-weight: ${manageGeneralRow.otherMenuModel.font_weight_detail}; color: ${manageGeneralRow.otherMenuModel.font_color_detail};font-family: ${manageGeneralRow.otherMenuModel.font_name};font-style: ${manageGeneralRow.otherMenuModel.font_style};background-color: ${manageGeneralRow.otherMenuModel.background_color_detail};"><span class="glyphicon glyphicon-question-sign"></span> คู่มือการใช้งาน</a></li>
                                 </ul>
                             </div>

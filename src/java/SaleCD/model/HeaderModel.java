@@ -1,6 +1,8 @@
 package SaleCD.model;
 
-public class HeaderModel extends Model{
+import org.hibernate.Session;
+
+public class HeaderModel extends Model {
 
     private int header_id;
     private String header_font_name;
@@ -92,6 +94,21 @@ public class HeaderModel extends Model{
     public void setHeader_border_style(String header_border_style) {
         this.header_border_style = header_border_style;
     }
-    
-    
+    //เอา headerModel มาเป็นพารามีเตอร์ซึ่งมันก็คือค่าที่รับมาจากพวก textboxเเล้วเอามาสร้าง get setให้มัน เเล้วก็เอามันมาเซฟ
+
+    public void save(HeaderModel headerModel) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(headerModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void update(HeaderModel headerModel, int id) {
+        Session session = factory.openSession();
+        session.getTransaction();
+        headerModel.setHeader_id(header_id);
+        session.getTransaction().commit();
+        session.close();
+    }
 }
