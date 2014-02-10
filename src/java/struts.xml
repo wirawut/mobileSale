@@ -38,12 +38,18 @@
             <param name="url">/SaleCD/ManageGeneral.jsp</param>
         </action>
         
-        <!--HeaderSave-->
-        <action name="HeaderSave" class="SaleCD.action.HeaderAction" method="save">
-            <result name="SUCCESS" type="redirect">
+         <!--HeaderSave-->
+        <action name="ManageGeneralEdit" class="SaleCD.action.ManageGeneralAction" method="edit">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/ManageGeneral.jsp</param>
+        </action>
+        
+         <action name="ManageGeneralSave" class="SaleCD.action.ManageGeneralAction" method="save">
+           <result name="SUCCESS" type="redirect">
                 <param name="location">ManageGeneralIndex</param>
             </result>
         </action>
+        
         <!--<action name="ManageBootstrapIndex" class="SaleCD.action.ManageBootstrapAction" method="index">
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/ManageBootstrap.jsp</param>

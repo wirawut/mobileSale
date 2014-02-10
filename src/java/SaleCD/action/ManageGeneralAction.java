@@ -5,10 +5,12 @@ import SaleCD.model.FooterModel;
 import SaleCD.model.HeaderModel;
 import SaleCD.model.MainMenuModel;
 import SaleCD.model.ManageGeneralModel;
+import static SaleCD.model.Model.factory;
 import SaleCD.model.OtherMenuModel;
 import SaleCD.model.UserMenuModel;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.Session;
 
 public class ManageGeneralAction extends IndexAction {
 
@@ -170,6 +172,22 @@ public class ManageGeneralAction extends IndexAction {
     }
 
     public String index() {
+        manageGeneralList = manageGeneralModel.list();
+        return "SUCCESS";
+    }
+
+    public String edit() {
+        manageGeneralModel = manageGeneralModel.find(user_id);
+        manageGeneralList = manageGeneralModel.list();
+        return "SUCCESS";
+    }
+
+    public String save() {
+        if (user_id == 0) {
+            manageGeneralModel.save(manageGeneralModel);
+        } else {
+            manageGeneralModel.update(manageGeneralModel);
+        }
         manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }

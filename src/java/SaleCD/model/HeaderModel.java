@@ -1,5 +1,7 @@
 package SaleCD.model;
 
+import static SaleCD.model.Model.factory;
+import java.util.List;
 import org.hibernate.Session;
 
 public class HeaderModel extends Model {
@@ -104,11 +106,34 @@ public class HeaderModel extends Model {
         session.close();
     }
 
-    public void update(HeaderModel headerModel, int id) {
+    public void update(HeaderModel headerModel) {
         Session session = factory.openSession();
         session.getTransaction();
-        headerModel.setHeader_id(header_id);
+//        headerModel.setHeader_id(header_id);
+        session.update(headerModel);
         session.getTransaction().commit();
         session.close();
+       
+       
+    }
+    
+    public HeaderModel find(int header_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        //ค้นหาทุกฟิล์ดใน HeaderModel ที่เท่ากับ header_id เเล้วรีเทิร์นกลับเป็นผลลัพธ์ของเมธอด find
+        HeaderModel headers = (HeaderModel) session.get(HeaderModel.class, header_id);
+        session.getTransaction().commit();
+        session.close();
+        return headers;
+      
+    }
+    
+     public List list(){
+     Session session = factory.openSession();
+        session.beginTransaction();
+        List headers = session.createQuery("FROM HeaderModel").list();
+        session.getTransaction().commit();
+        session.close();
+        return headers;
     }
 }

@@ -197,4 +197,29 @@ public class ManageGeneralModel extends Model {
         session.close();
         return manageGeneralModels;
     }
+
+    public ManageGeneralModel find(int user_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        ManageGeneralModel manageGenerals = (ManageGeneralModel) session.get(ManageGeneralModel.class, user_id);
+        session.getTransaction().commit();
+        session.close();
+        return manageGenerals;
+    }
+
+    public void save(ManageGeneralModel manageGeneralModel) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(manageGeneralModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void update(ManageGeneralModel manageGeneralModel) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.update(manageGeneralModel);
+        session.getTransaction().commit();
+        session.close();
+    }
 }
