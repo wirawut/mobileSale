@@ -1,5 +1,6 @@
 package SaleCD.action;
 
+import SaleCD.model.ManageGeneralModel;
 import SaleCD.model.UnitModel;
 import java.util.Date;
 import java.util.List;
@@ -10,9 +11,28 @@ public class UnitAction extends IndexAction {
     private UnitModel unitModel;
     private List unitList;
     private int unit_id;
+    private List manageGeneralList;
+    private ManageGeneralModel manageGeneralModel;
 
     public UnitAction() {
         unitModel = new UnitModel();
+        manageGeneralModel = new ManageGeneralModel();
+    }
+
+    public List getManageGeneralList() {
+        return manageGeneralList;
+    }
+
+    public void setManageGeneralList(List manageGeneralList) {
+        this.manageGeneralList = manageGeneralList;
+    }
+
+    public ManageGeneralModel getManageGeneralModel() {
+        return manageGeneralModel;
+    }
+
+    public void setManageGeneralModel(ManageGeneralModel manageGeneralModel) {
+        this.manageGeneralModel = manageGeneralModel;
     }
 
     public int getUnit_id() {
@@ -41,10 +61,11 @@ public class UnitAction extends IndexAction {
 
     public String index() {
         unitList = unitModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
-   public String save() {
+    public String save() {
         if (unit_id == 0) {
             Date createdDate = new Date();
             unitModel.setDate(createdDate);
@@ -55,17 +76,22 @@ public class UnitAction extends IndexAction {
             unitModel.setDate(oldIncomeModel.getDate());
             unitModel.update(unitModel);
         }
+        unitList = unitModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
     public String edit() {
         unitModel = unitModel.find(unit_id);
-        unitList = unitModel.list();
+        unitList =unitModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
-     public String delete() {
+    public String delete() {
         unitModel.delete(unit_id);
+        unitList= unitModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 }

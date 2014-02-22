@@ -1,5 +1,9 @@
 package SaleCD.model;
 
+import static SaleCD.model.Model.factory;
+import java.util.List;
+import org.hibernate.Session;
+
 public class UserMenuModel extends Model {
 
     private int user_menu_id;
@@ -136,5 +140,48 @@ public class UserMenuModel extends Model {
 
     public void setBorder_style(String border_style) {
         this.border_style = border_style;
+    }
+
+    public List list() {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        List userMenus = session.createQuery("FROM UserMenuModel").list();
+        session.getTransaction().commit();
+        session.close();
+        return userMenus;
+    }
+
+    public void delete(int user_menu_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        UserMenuModel userMenus = (UserMenuModel) session.get(UserMenuModel.class, user_menu_id);
+        session.delete(userMenus);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void save(UserMenuModel userMenuModel) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(userMenuModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void update(UserMenuModel userMenuModel , int user_menu_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.update(userMenuModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public UserMenuModel find(int user_menu_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        UserMenuModel userMenus = (UserMenuModel) session.get(UserMenuModel.class, user_menu_id);
+        session.getTransaction().commit();
+        session.close();
+        return userMenus;
     }
 }

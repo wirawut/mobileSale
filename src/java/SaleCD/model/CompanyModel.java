@@ -1,5 +1,6 @@
 package SaleCD.model;
 
+import static SaleCD.model.Model.factory;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
@@ -70,7 +71,7 @@ public class CompanyModel extends Model {
         this.date = date;
     }
 
-    public List list() {
+     public List list() {
         Session session = factory.openSession();
         session.beginTransaction();
         List companys = session.createQuery("FROM CompanyModel").list();
@@ -79,11 +80,37 @@ public class CompanyModel extends Model {
         return companys;
     }
 
-    /*  public void save(CompanyModel companyModel) {
-     Session session = factory.openSession();
-     session.beginTransaction();
-     session.save(companyModel);
-     session.getTransaction().commit();
-     session.close();
-     } */
+    public void update(CompanyModel companyModel) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.update(companyModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void delete(int company_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        CompanyModel companys = (CompanyModel) session.get(CompanyModel.class, company_id);
+        session.delete(companys);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public CompanyModel find(int level_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        CompanyModel companys = (CompanyModel) session.get(LevelModel.class, level_id);
+        session.getTransaction().commit();
+        session.close();
+        return companys;
+    }
+
+    public void save(CompanyModel companyModel) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(companyModel);
+        session.getTransaction().commit();
+        session.close();
+    }
 }

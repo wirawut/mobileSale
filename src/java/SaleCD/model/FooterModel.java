@@ -1,8 +1,13 @@
-
 package SaleCD.model;
 
-public class FooterModel extends Model{
+import static SaleCD.model.Model.factory;
+import java.util.List;
+import org.hibernate.Session;
+
+public class FooterModel extends Model {
+
     private int footer_id;
+    private String shows;
     private String footer_font_name;
     private String footer_font_style;
     private String footer_font_size;
@@ -19,6 +24,14 @@ public class FooterModel extends Model{
 
     public void setFooter_id(int footer_id) {
         this.footer_id = footer_id;
+    }
+
+    public String getShows() {
+        return shows;
+    }
+
+    public void setShows(String shows) {
+        this.shows = shows;
     }
 
     public String getFooter_font_name() {
@@ -92,6 +105,50 @@ public class FooterModel extends Model{
     public void setFooter_border_style(String footer_border_style) {
         this.footer_border_style = footer_border_style;
     }
-    
-    
+
+    public void save(FooterModel footerModel) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(footerModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void update(FooterModel footerModel, int footer_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.update(footerModel);
+        session.getTransaction().commit();
+        session.close();
+
+
+    }
+
+    public FooterModel find(int footer_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        //ค้นหาทุกฟิล์ดใน FooterModel ที่เท่ากับ footer_id เเล้วรีเทิร์นกลับเป็นผลลัพธ์ของเมธอด find
+        FooterModel footers = (FooterModel) session.get(FooterModel.class, footer_id);
+        session.getTransaction().commit();
+        session.close();
+        return footers;
+    }
+
+    public List list() {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        List footers = session.createQuery("FROM FooterModel").list();
+        session.getTransaction().commit();
+        session.close();
+        return footers;
+    }
+
+    public void delete(int footer_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        FooterModel footers = (FooterModel) session.get(MainMenuModel.class, footer_id);
+        session.delete(footers);
+        session.getTransaction().commit();
+        session.close();
+    }
 }

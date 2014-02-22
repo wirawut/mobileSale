@@ -1,5 +1,9 @@
 package SaleCD.model;
 
+import static SaleCD.model.Model.factory;
+import java.util.List;
+import org.hibernate.Session;
+
 public class OtherMenuModel extends Model {
 
     private int other_menu_id;
@@ -136,5 +140,47 @@ public class OtherMenuModel extends Model {
 
     public void setBorder_style(String border_style) {
         this.border_style = border_style;
+    }
+
+    public List list() {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        List others = session.createQuery("FROM OtherMenuModel").list();
+        session.getTransaction().commit();
+        session.close();
+        return others;
+    }
+
+    public void delete(int other_menu_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        OtherMenuModel otherMenus = (OtherMenuModel) session.get(OtherMenuModel.class, other_menu_id);
+        session.delete(otherMenus);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public OtherMenuModel find(int other_menu_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        OtherMenuModel otherMenus = (OtherMenuModel) session.get(OtherMenuModel.class, other_menu_id);
+        session.getTransaction().commit();
+        return otherMenus;
+    }
+
+    public void update(OtherMenuModel otherMenuModel,int other_menu_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.update(otherMenuModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void save(OtherMenuModel otherMenuModel) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(otherMenuModel);
+        session.getTransaction().commit();
+        session.close();
     }
 }

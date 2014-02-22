@@ -10,7 +10,24 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(function() {
-        //alert("hader_id = ${manageGeneralRow.mainMenuModel.font_size_detail}");
+        $("#cmd_header").click(function() {
+            $.ajax({
+                url: "<s:url action='HeaderSave'/>",
+                type: "post",
+                data: $("#form_header").serialize(),
+                success: function(result) {
+                    alert(result);
+                    bindManageGeneral();
+                },
+                error: function(e) {
+                    alert(e);
+                    bindManageGeneral();
+                }
+            });
+            function bindManageGeneral() {
+                $("#showManageGeneral").load("ManageGeneralIndex");
+            }
+        });
     });
 </script>
 <style>
@@ -18,15 +35,14 @@
         color:blue!important;
     }
 </style>
+<s:hidden id = "user_id" name="user_id" />
 <div class = "panel-heading" style = "font-weight: bold" ><span class="glyphicon glyphicon-adjust"></span> ตั้งค่าทั่วไป </div>
 
-
-
-<div class = "panel-body" >
+<div class = "panel-body"  id="showManageGeneral">
     <div class="bs-example">
         <div class="panel-group" id="accordion" >
-            <s:form action="ManageGeneralSave" theme="simple" >
-                <div class="panel panel-default" >
+            <s:form theme="simple" id="form_header">
+                <div class="panel panel-default"  >
                     <div class="panel-heading" >
                         <h4 class="panel-title" style="font-size: 15px">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">ตั้งค่าส่วนหัว</a>
@@ -34,8 +50,17 @@
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse">
                         <table  width="100%">
-                            <tr><td><s:hidden name="headerModel.header_id" /><br/></td></tr>
                             <tr>
+                                <td>
+                                    <s:hidden id = "header_id" name="headerModel.header_id" /><br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="30px">&nbsp;</td>
+                                <td class="form-group has-success">
+                                    <s:label cssClass="control-label" for="inputSuccess1">การเเสดง : </s:label>
+                                    <s:select cssClass="form-control" name="headerModel.shows" list="listShow"  style="height: 40px" />
+                                </td>
                                 <td width="30px">&nbsp;</td>
                                 <td class="form-group has-success">
                                     <s:label cssClass="control-label" for="inputSuccess1">ชื่อฟอนท์ : </s:label>
@@ -47,13 +72,13 @@
                                     <s:textfield name="headerModel.header_font_style" cssClass="form-control" placeholder="ตัวอย่าง Normal,Italic เป็นต้น" style="height: 40px" />
                                 </td> 
                                 <td width="30px">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td width="30px">&nbsp;</td>
                                 <td class="form-group has-success">
                                     <s:label cssClass="control-label" for="inputSuccess1">ขนาดฟอนท์ : </s:label>
                                     <s:textfield name="headerModel.header_font_size" cssClass="form-control" placeholder="ตัวอย่าง 15px,3em เป็นต้น" style="height: 40px" />
                                 </td> 
-                                <td width="30px">&nbsp;</td>
-                            </tr>
-                            <tr>
                                 <td width="30px">&nbsp;</td>
                                 <td class="form-group has-success">
                                     <s:label cssClass="control-label" for="inputSuccess1">ความหนาฟอนท์ : </s:label>
@@ -65,14 +90,13 @@
                                     <s:textfield name="headerModel.header_font_color" cssClass="form-control" placeholder="ตัวอย่าง Green,#000 เป็นต้น" style="height: 40px" />
                                 </td> 
                                 <td width="30px">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td width="30px">&nbsp;</td>
                                 <td class="form-group has-success">
                                     <s:label cssClass="control-label" for="inputSuccess1">สีพื้นหลัง : </s:label>
                                     <s:textfield name="headerModel.header_background_color" cssClass="form-control" placeholder="ตัวอย่าง Pink,#00FA9A เป็นต้น" style="height: 40px" />
                                 </td> 
-                                <td width="30px">&nbsp;</td>
-                            </tr>
-
-                            <tr>
                                 <td width="30px">&nbsp;</td>
                                 <td class="form-group has-success">
                                     <s:label cssClass="control-label" for="inputSuccess1">สีเส้นขอบ : </s:label>
@@ -84,6 +108,9 @@
                                     <s:textfield name="headerModel.header_border_weight" cssClass="form-control" placeholder="ตัวอย่าง 2px,1em เป็นต้น" style="height: 40px" />
                                 </td> 
                                 <td width="30px">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td width="30px">&nbsp;</td>
                                 <td class="form-group has-success">
                                     <s:label cssClass="control-label" for="inputSuccess1">ลักษณะเส้นขอบ : </s:label>
                                     <s:textfield name="headerModel.header_border_style" cssClass="form-control" placeholder="ตัวอย่าง Solid,Dashed เป็นต้น" style="height: 40px" />
@@ -92,8 +119,25 @@
                             </tr>
                             <tr><td><br/></td></tr>
                         </table>
+                        <table align="center">
+                            <tr><td><br/></td></tr>
+                            <tr>
+                                <td align="center">
+                                    <s:submit type="button" id="cmd_header" cssClass="btn btn-default" theme="simple" label="">
+                                        <span class="glyphicon glyphicon-floppy-saved"></span> บันทึก
+                                    </s:submit>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-floppy-remove"></span> ยกเลิก
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr><td><br/></td></tr>
+                        </table>
                     </div>
                 </div>
+            </s:form>
+            <s:form action="MainMenuSave" theme="simple" >
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title" style="font-size: 15px">
@@ -112,7 +156,7 @@
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">การเเสดง : </s:label>
-                                        <s:select cssClass="form-control" name="mainMenuModel.shows" list="#{'show':'แสดง','hidden':'ซ่อน'}"  style="height: 40px" />
+                                        <s:select cssClass="form-control" name="mainMenuModel.shows" list="listShow"  style="height: 40px" />
                                     </td>
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
@@ -194,9 +238,26 @@
                                     <td width="30px">&nbsp;</td>
                                 </tr>
                             </table>
+                            <table align="center">
+                                <tr><td><br/></td></tr>
+                                <tr>
+                                    <td align="center">
+                                        <s:submit type="button" cssClass="btn btn-default" theme="simple" label="">
+                                            <span class="glyphicon glyphicon-floppy-saved"></span> บันทึก
+                                        </s:submit>
+                                        &nbsp;
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-floppy-remove"></span> ยกเลิก
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr><td><br/></td></tr>
+                            </table>
                         </div>
                     </div>
                 </div>
+            </s:form>
+            <s:form action="OtherMenuSave" theme="simple" >               
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title" style="font-size: 15px">
@@ -206,12 +267,12 @@
                     <div id="collapseThree" class="panel-collapse collapse">
                         <div class="panel-body">
                             <table  width="100%">
-                                <tr><td><s:hidden name="otherMenuModel.main_menu_id" /></td></tr>
+                                <tr><td><s:hidden name="otherMenuModel.other_menu_id" /></td></tr>
                                 <tr>
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">การเเสดง : </s:label>
-                                        <s:select cssClass="form-control" name="mainMenuModel.shows" list="#{'show':'แสดง','hidden':'ซ่อน'}"  style="height: 40px" />
+                                        <s:select cssClass="form-control" name="otherMenuModel.shows" list="listShow"  style="height: 40px" />
                                     </td>
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
@@ -293,9 +354,26 @@
                                     <td width="30px">&nbsp;</td>
                                 </tr>
                             </table>
+                            <table align="center">
+                                <tr><td><br/></td></tr>
+                                <tr>
+                                    <td align="center">
+                                        <s:submit type="button" cssClass="btn btn-default" theme="simple" label="">
+                                            <span class="glyphicon glyphicon-floppy-saved"></span> บันทึก
+                                        </s:submit>
+                                        &nbsp;
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-floppy-remove"></span> ยกเลิก
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr><td><br/></td></tr>
+                            </table>
                         </div>
                     </div>
                 </div>
+            </s:form>
+            <s:form action="UserMenuSave" theme="simple" >              
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title" style="font-size: 15px">
@@ -307,24 +385,24 @@
                             <table  width="100%">
                                 <tr>
                                     <td>
-                                        <s:hidden name="otherMenuModel.main_menu_id" />
+                                        <s:hidden name="userMenuModel.user_menu_id" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">การเเสดง : </s:label>
-                                        <s:select cssClass="form-control" name="mainMenuModel.shows" list="#{'show':'แสดง','hidden':'ซ่อน'}"  style="height: 40px" />
+                                        <s:select cssClass="form-control" name="userMenuModel.shows" list="listShow"  style="height: 40px" />
                                     </td>
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ชื่อฟอนท์ : </s:label>
-                                        <s:textfield name="usermenuModel.font_name" id="inputSuccess1" cssClass="form-control" placeholder="ตัวอย่าง Tahoma,Arial เป็นต้น" style="height: 40px"/>
+                                        <s:textfield name="userMenuModel.font_name" id="inputSuccess1" cssClass="form-control" placeholder="ตัวอย่าง Tahoma,Arial เป็นต้น" style="height: 40px"/>
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ลักษณะฟอนท์ : </s:label>
-                                        <s:textfield name="usermenuModel.font_style" cssClass="form-control" placeholder="ตัวอย่าง Normal,Italic เป็นต้น" style="height: 40px" />
+                                        <s:textfield name="userMenuModel.font_style" cssClass="form-control" placeholder="ตัวอย่าง Normal,Italic เป็นต้น" style="height: 40px" />
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                 </tr>
@@ -332,17 +410,17 @@
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ขนาดฟอนท์(หัวข้อ) : </s:label>
-                                        <s:textfield name="usermenuModel.font_size_header" cssClass="form-control" placeholder="ตัวอย่าง 15px,3em เป็นต้น" style="height: 40px" />
+                                        <s:textfield name="userMenuModel.font_size_header" cssClass="form-control" placeholder="ตัวอย่าง 15px,3em เป็นต้น" style="height: 40px" />
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ขนาดฟอนท์(รายละเอียด) </s:label>
-                                        <s:textfield name="usermenuModel.font_size_detail" cssClass="form-control" placeholder="ตัวอย่าง Normal,Bold เป็นต้น" style="height: 40px"/>
+                                        <s:textfield name="userMenuModel.font_size_detail" cssClass="form-control" placeholder="ตัวอย่าง Normal,Bold เป็นต้น" style="height: 40px"/>
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ความหนา(หัวข้อ) : </s:label>
-                                        <s:textfield name="usermenuModel.font_weight_header" cssClass="form-control" placeholder="ตัวอย่าง Green,#000 เป็นต้น" style="height: 40px" />
+                                        <s:textfield name="userMenuModel.font_weight_header" cssClass="form-control" placeholder="ตัวอย่าง Green,#000 เป็นต้น" style="height: 40px" />
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                 </tr>
@@ -350,17 +428,17 @@
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ความหนา(รายละเอียด) : </s:label>
-                                        <s:textfield name="usermenuModel.font_weight_detail" cssClass="form-control" placeholder="ตัวอย่าง Pink,#00FA9A เป็นต้น" style="height: 40px" />
+                                        <s:textfield name="userMenuModel.font_weight_detail" cssClass="form-control" placeholder="ตัวอย่าง Pink,#00FA9A เป็นต้น" style="height: 40px" />
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">สีฟอนท์(หัวข้อ) : </s:label>
-                                        <s:textfield name="usermenuModel.font_color_header" placeholder="ตัวอย่าง Blue,33FFCC เป็นต้น" cssClass="form-control"  style="height: 40px"/>
+                                        <s:textfield name="userMenuModel.font_color_header" placeholder="ตัวอย่าง Blue,33FFCC เป็นต้น" cssClass="form-control"  style="height: 40px"/>
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">สีฟอนท์(รายละเอียด) : </s:label>
-                                        <s:textfield name="usermenuModel.font_color_detail" cssClass="form-control" placeholder="ตัวอย่าง 2px,1em เป็นต้น" style="height: 40px" />
+                                        <s:textfield name="userMenuModel.font_color_detail" cssClass="form-control" placeholder="ตัวอย่าง 2px,1em เป็นต้น" style="height: 40px" />
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                 </tr>
@@ -368,17 +446,17 @@
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">สีพื้นหลัง(หัวข้อ) : </s:label>
-                                        <s:textfield name="usermenuModel.background_color_header" cssClass="form-control" placeholder="ตัวอย่าง Solid,Dashed เป็นต้น" style="height: 40px" />
+                                        <s:textfield name="userMenuModel.background_color_header" cssClass="form-control" placeholder="ตัวอย่าง Solid,Dashed เป็นต้น" style="height: 40px" />
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">สีพื้นหลัง(รายละเอียด) : </s:label>
-                                        <s:textfield name="usermenuModel.background_color_detail" placeholder="ตัวอย่าง Blue,33FFCC เป็นต้น" cssClass="form-control"  style="height: 40px"/>
+                                        <s:textfield name="userMenuModel.background_color_detail" placeholder="ตัวอย่าง Blue,33FFCC เป็นต้น" cssClass="form-control"  style="height: 40px"/>
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">สีเส้นขอบ : </s:label>
-                                        <s:textfield name="usermenuModel.border_color" cssClass="form-control" placeholder="ตัวอย่าง 2px,1em เป็นต้น" style="height: 40px" />
+                                        <s:textfield name="userMenuModel.border_color" cssClass="form-control" placeholder="ตัวอย่าง 2px,1em เป็นต้น" style="height: 40px" />
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                 </tr>
@@ -386,19 +464,36 @@
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ความเส้นขอบ : </s:label>
-                                        <s:textfield name="usermenuModel.border_weight" cssClass="form-control" placeholder="ตัวอย่าง Solid,Dashed เป็นต้น" style="height: 40px" />
+                                        <s:textfield name="userMenuModel.border_weight" cssClass="form-control" placeholder="ตัวอย่าง Solid,Dashed เป็นต้น" style="height: 40px" />
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ลักษณะเส้นขอบ : </s:label>
-                                        <s:textfield name="usermenuModel.border_style" placeholder="ตัวอย่าง Blue,33FFCC เป็นต้น" cssClass="form-control"  style="height: 40px"/>
+                                        <s:textfield name="userMenuModel.border_style" placeholder="ตัวอย่าง Blue,33FFCC เป็นต้น" cssClass="form-control"  style="height: 40px"/>
                                     </td> 
                                     <td width="30px">&nbsp;</td>
                                 </tr>
                             </table>
+                            <table align="center">
+                                <tr><td><br/></td></tr>
+                                <tr>
+                                    <td align="center">
+                                        <s:submit type="button" cssClass="btn btn-default" theme="simple" label="">
+                                            <span class="glyphicon glyphicon-floppy-saved"></span> บันทึก
+                                        </s:submit>
+                                        &nbsp;
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-floppy-remove"></span> ยกเลิก
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr><td><br/></td></tr>
+                            </table>
                         </div>
                     </div>
                 </div>
+            </s:form>
+            <s:form action="ContentMenuSave" theme="simple" >                
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title" style="font-size: 15px">
@@ -410,14 +505,14 @@
                             <table  width="100%">
                                 <tr>
                                     <td>
-                                        <s:hidden name="contentMenuModel.main_menu_id" />
+                                        <s:hidden name="contentMenuModel.content_menu_id" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">การเเสดง : </s:label>
-                                        <s:select cssClass="form-control" name="mainMenuModel.shows" list="#{'show':'แสดง','hidden':'ซ่อน'}"  style="height: 40px" />
+                                        <s:select cssClass="form-control" name="contentMenuModel.shows" list="listShow"  style="height: 40px" />
                                     </td>
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
@@ -499,9 +594,26 @@
                                     <td width="30px">&nbsp;</td>
                                 </tr>
                             </table>
+                            <table align="center">
+                                <tr><td><br/></td></tr>
+                                <tr>
+                                    <td align="center">
+                                        <s:submit type="button" cssClass="btn btn-default" theme="simple" label="">
+                                            <span class="glyphicon glyphicon-floppy-saved"></span> บันทึก
+                                        </s:submit>
+                                        &nbsp;
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-floppy-remove"></span> ยกเลิก
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr><td><br/></td></tr>
+                            </table>
                         </div>
                     </div>
                 </div>
+            </s:form>
+            <s:form action="FooterSave" theme="simple" >                  
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title" style="font-size: 15px">
@@ -515,6 +627,11 @@
                                 <tr>
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
+                                        <s:label cssClass="control-label" for="inputSuccess1">การเเสดง : </s:label>
+                                        <s:select cssClass="form-control" name="footerModel.shows" list="listShow"  style="height: 40px" />
+                                    </td>
+                                    <td width="30px">&nbsp;</td>
+                                    <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ชื่อฟอนท์ : </s:label>
                                         <s:textfield name="footerModel.footer_font_name" id="inputSuccess1" cssClass="form-control" placeholder="ตัวอย่าง Tahoma,Arial เป็นต้น" style="height: 40px"/>
                                     </td> 
@@ -524,13 +641,13 @@
                                         <s:textfield name="footerModel.footer_font_style" cssClass="form-control" placeholder="ตัวอย่าง Normal,Italic เป็นต้น" style="height: 40px" />
                                     </td> 
                                     <td width="30px">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ขนาดฟอนท์ : </s:label>
                                         <s:textfield name="footerModel.footer_font_size" cssClass="form-control" placeholder="ตัวอย่าง 15px,3em เป็นต้น" style="height: 40px" />
                                     </td> 
-                                    <td width="30px">&nbsp;</td>
-                                </tr>
-                                <tr>
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ความหนาฟอนท์ : </s:label>
@@ -542,14 +659,14 @@
                                         <s:textfield name="footerModel.footer_font_color" cssClass="form-control" placeholder="ตัวอย่าง Green,#000 เป็นต้น" style="height: 40px" />
                                     </td> 
                                     <td width="30px">&nbsp;</td>
+                                </tr>
+
+                                <tr>
+                                    <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">สีพื้นหลัง : </s:label>
                                         <s:textfield name="footerModel.footer_background_color" cssClass="form-control" placeholder="ตัวอย่าง Pink,#00FA9A เป็นต้น" style="height: 40px" />
                                     </td> 
-                                    <td width="30px">&nbsp;</td>
-                                </tr>
-
-                                <tr>
                                     <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">สีเส้นขอบ : </s:label>
@@ -561,6 +678,9 @@
                                         <s:textfield name="footerModel.footer_border_weight" cssClass="form-control" placeholder="ตัวอย่าง 2px,1em เป็นต้น" style="height: 40px" />
                                     </td> 
                                     <td width="30px">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td width="30px">&nbsp;</td>
                                     <td class="form-group has-success">
                                         <s:label cssClass="control-label" for="inputSuccess1">ลักษณะเส้นขอบ : </s:label>
                                         <s:textfield name="footerModel.footer_border_style" cssClass="form-control" placeholder="ตัวอย่าง Solid,Dashed เป็นต้น" style="height: 40px" />
@@ -568,24 +688,24 @@
                                     <td width="30px">&nbsp;</td>
                                 </tr>
                             </table>
+                            <table align="center">
+                                <tr><td><br/></td></tr>
+                                <tr>
+                                    <td align="center">
+                                        <s:submit type="button" cssClass="btn btn-default" theme="simple" label="">
+                                            <span class="glyphicon glyphicon-floppy-saved"></span> บันทึก
+                                        </s:submit>
+                                        &nbsp;
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-floppy-remove"></span> ยกเลิก
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr><td><br/></td></tr>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <table align="center">
-                    <tr><td><br/></td></tr>
-                    <tr>
-                        <td align="center">
-                            <s:submit type="button" cssClass="btn btn-default" theme="simple" label="">
-                                <span class="glyphicon glyphicon-floppy-saved"></span> บันทึก
-                            </s:submit>
-                            &nbsp;
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-floppy-remove"></span> ยกเลิก
-                            </button>
-                        </td>
-                    </tr>
-                    <tr><td><br/></td></tr>
-                </table>
             </s:form>
         </div>
     </div>

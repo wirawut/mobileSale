@@ -7,8 +7,9 @@
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <!--company-->
-        <action name="HomeIndex" class="SaleCD.action.CompanyAction" >
+        <action name="HomeIndex" class="SaleCD.action.HomeAction" method="index">
             <result name="SUCCESS" >index.jsp</result>
+             <param name="url">SaleCD/Home.jsp</param>
         </action>
         <action name="CompanyIndex" class="SaleCD.action.CompanyAction" method="index">
             <result name="SUCCESS">index.jsp</result>
@@ -26,33 +27,131 @@
         </action>
         <action name="UnitEdit" class="SaleCD.action.UnitAction" method="edit">
             <result name="SUCCESS">index.jsp</result>
-            <param name="url">/SaleCD/Unit.jsp</param>
+            <param name="url">/SaleCD/UnitForm.jsp</param>
         </action>
         <action name="UnitDelete" class="SaleCD.action.UnitAction" method="delete">
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/Unit.jsp</param>
+        </action>
+        <!--Level-->
+        <action name="LevelIndex" class="SaleCD.action.LevelAction" method="index">
+            <result name ="SUCCESS" >index.jsp</result>
+            <param name="url" >SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <!--mainMenu-->
+        <action name="MainMenuIndex" class="SaleCD.action.MainMenuAction" method="index">
+            <result name ="SUCCESS" >index.jsp</result>
+            <param name="url" >SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <!--otherMenu-->
+        <action name="OtherMenuIndex" class="SaleCD.action.OtherMenuAction" method="index">
+            <result name ="SUCCESS" >index.jsp</result>
+            <param name="url" >SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <!--userMenu-->
+        <action name="UserMenuIndex" class="SaleCD.action.UserMenuAction" method="index">
+            <result name ="SUCCESS" >index.jsp</result>
+            <param name="url" >SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <!--contentMenu-->
+        <action name="ContentMenuIndex" class="SaleCD.action.ContentMenuAction" method="index">
+            <result name ="SUCCESS" >index.jsp</result>
+            <param name="url" >SaleCD/ManageGeneral.jsp</param>
         </action>
         <!--generalIndex-->
         <action name="ManageGeneralIndex" class="SaleCD.action.ManageGeneralAction" method="index">
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/ManageGeneral.jsp</param>
         </action>
-        
-         <!--HeaderSave-->
+        <!--manageGeneral-->
         <action name="ManageGeneralEdit" class="SaleCD.action.ManageGeneralAction" method="edit">
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/ManageGeneral.jsp</param>
         </action>
         
-         <action name="ManageGeneralSave" class="SaleCD.action.ManageGeneralAction" method="save">
-           <result name="SUCCESS" type="redirect">
+        <action name="ManageGeneralSave" class="SaleCD.action.ManageGeneralAction" method="save">
+            <result name="SUCCESS" type="redirect">
                 <param name="location">ManageGeneralIndex</param>
             </result>
         </action>
-        
-        <!--<action name="ManageBootstrapIndex" class="SaleCD.action.ManageBootstrapAction" method="index">
+        <!--header-->
+        <action name="HeaderIndex" class="SaleCD.action.HeaderAction" method="index">
+            <result name ="SUCCESS" >index.jsp</result>
+            <param name="url" >SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <action name="HeaderSave" class="SaleCD.action.HeaderAction" method="save">
             <result name="SUCCESS">index.jsp</result>
-            <param name="url">/SaleCD/ManageBootstrap.jsp</param>
-        </action> -->
+            <param name="url">/SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <action name="HeaderEdit" class="SaleCD.action.HeaderAction" method="edit">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <!--footer-->
+        <action name="FooterIndex" class="SaleCD.action.FooterAction" method="index">
+            <result name ="SUCCESS" >index.jsp</result>
+            <param name="url" >SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <action name="FooterSave" class="SaleCD.action.FooterAction" method="save">
+            <result name="SUCCESS" type="redirect">
+                <param name="location">ManageGeneralIndex</param>
+            </result>
+        </action>
+        <action name="FooterEdit" class="SaleCD.action.FooterAction" method="edit">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <!--MainMenu-->
+        <action name="MainMenuSave" class="SaleCD.action.MainMenuAction" method="save">
+            <result name="SUCCESS" type="redirect">
+                <param name="location">ManageGeneralIndex</param>
+            </result>
+        </action>
+        <action name="MainMenuEdit" class="SaleCD.action.MainMenuAction" method="edit">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <!--OtherMenu-->
+        <action name="OtherMenuSave" class="SaleCD.action.OtherMenuAction" method="save">
+            <result name="SUCCESS" type="redirect">
+                <param name="location">ManageGeneralIndex</param>
+            </result>
+        </action>
+        <action name="OtherMenuEdit" class="SaleCD.action.OtherMenuAction" method="edit">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <!--UserMenu-->
+        <action name="UserMenuSave" class="SaleCD.action.UserMenuAction" method="save">
+            <result name="SUCCESS" type="redirect">
+                <param name="location">ManageGeneralIndex</param>
+            </result>
+        </action>
+        <action name="UserMenuEdit" class="SaleCD.action.UserMenuAction" method="edit">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/ManageGeneral.jsp</param>
+        </action>
+        <!--ContentMenu-->
+        <action name="ContentMenuSave" class="SaleCD.action.ContentMenuAction" method="save">
+            <result name="SUCCESS" type="redirect">
+                <param name="location">ManageGeneralIndex</param>
+            </result>
+        </action>
+        <action name="ContentMenuEdit" class="SaleCD.action.ContentMenuAction" method="edit">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/ManageGeneral.jsp</param>
+        </action>
+        
+       <!--stock-->
+        <action name="StockIndex" class="SaleCD.action.StockAction" method="index">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SalCD/Stock.jsp</param>
+        </action>
+        
+        <!--manageBasic-->
+        <action name="ManageBasicIndex" class="SaleCD.action.ManageBasicAction" method="index">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/ManageBasic.jsp</param>
+        </action>
     </package>
 </struts>

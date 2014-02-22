@@ -2,31 +2,27 @@ package SaleCD.action;
 
 import SaleCD.model.HeaderModel;
 import SaleCD.model.ManageGeneralModel;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.struts2.ServletActionContext;
+import org.omg.PortableServer.REQUEST_PROCESSING_POLICY_ID;
 
 public class HeaderAction extends IndexAction {
+    //เตรียมสร้าง get set ให้ message เพื่อตอบสนองกลับไปยัง success ของ ajax
 
-    private List manageGeneralList;
     private ManageGeneralModel manageGeneralModel;
     private HeaderModel headerModel;
     //รับมาจาก form
     private int header_id;
     private List headerList;
+    private List manageGeneralList;
     //คอนสตรัคเจ้อ
 
     public HeaderAction() {
         headerModel = new HeaderModel();
         manageGeneralModel = new ManageGeneralModel();
-        manageGeneralList = new ArrayList();
-    }
-
-    public List getManageGeneralList() {
-        return manageGeneralList;
-    }
-
-    public void setManageGeneralList(List manageGeneralList) {
-        this.manageGeneralList = manageGeneralList;
     }
 
     public ManageGeneralModel getManageGeneralModel() {
@@ -35,6 +31,14 @@ public class HeaderAction extends IndexAction {
 
     public void setManageGeneralModel(ManageGeneralModel manageGeneralModel) {
         this.manageGeneralModel = manageGeneralModel;
+    }
+
+    public List getManageGeneralList() {
+        return manageGeneralList;
+    }
+
+    public void setManageGeneralList(List manageGeneralList) {
+        this.manageGeneralList = manageGeneralList;
     }
 
     public HeaderModel getHeaderModel() {
@@ -61,23 +65,37 @@ public class HeaderAction extends IndexAction {
         this.headerList = headerList;
     }
 
-    public String save() {
-        header_id = 1;
+    public String index() {
+        headerList = headerModel.list();
+        return "SUCCESS";
+    }
+
+    public String save() throws IOException {
+       header_id = headerModel.getHeader_id();
         if (header_id == 0) {
             headerModel.save(headerModel);
         } else {
-//            headerModel.setHeader_id(header_id);
-            headerModel.update(headerModel);
+            headerModel.update(headerModel, header_id);
             setHeader_id(0);
         }
-        headerList = headerModel.list();
+        manageGeneralList = manageGeneralModel.list();
+//        System.out.println("สำเร็จ");
+//        HttpServletResponse response = ServletActionContext.getResponse();  
+//        PrintWriter out = response.getWriter();  
+//        out.println("Hello " + getMessage());  
+//        out.flush(); 
+
         return "SUCCESS";
     }
 
     public String edit() {
         headerModel = headerModel.find(header_id);
-//        headerList = headerModel.list();
         manageGeneralList = manageGeneralModel.list();
+        return "SUCCESS";
+    }
+
+    public String delete() {
+        headerList = headerModel.list();
         return "SUCCESS";
     }
 }

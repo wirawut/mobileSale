@@ -1,12 +1,14 @@
 package SaleCD.model;
 
 import static SaleCD.model.Model.factory;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
 public class HeaderModel extends Model {
 
     private int header_id;
+    private String shows;
     private String header_font_name;
     private String header_font_style;
     private String header_font_size;
@@ -23,6 +25,14 @@ public class HeaderModel extends Model {
 
     public void setHeader_id(int header_id) {
         this.header_id = header_id;
+    }
+
+    public String getShows() {
+        return shows;
+    }
+
+    public void setShows(String shows) {
+        this.shows = shows;
     }
 
     public String getHeader_font_name() {
@@ -99,24 +109,21 @@ public class HeaderModel extends Model {
     //เอา headerModel มาเป็นพารามีเตอร์ซึ่งมันก็คือค่าที่รับมาจากพวก textboxเเล้วเอามาสร้าง get setให้มัน เเล้วก็เอามันมาเซฟ
 
     public void save(HeaderModel headerModel) {
-        Session session = factory.openSession();
+      Session session = factory.openSession();
         session.beginTransaction();
         session.save(headerModel);
         session.getTransaction().commit();
         session.close();
     }
 
-    public void update(HeaderModel headerModel) {
+    public void update(HeaderModel headerModel, int header_id) {
         Session session = factory.openSession();
-        session.getTransaction();
-//        headerModel.setHeader_id(header_id);
+        session.beginTransaction();
         session.update(headerModel);
         session.getTransaction().commit();
         session.close();
-       
-       
     }
-    
+
     public HeaderModel find(int header_id) {
         Session session = factory.openSession();
         session.beginTransaction();
@@ -125,11 +132,11 @@ public class HeaderModel extends Model {
         session.getTransaction().commit();
         session.close();
         return headers;
-      
+
     }
-    
-     public List list(){
-     Session session = factory.openSession();
+
+    public List list() {
+        Session session = factory.openSession();
         session.beginTransaction();
         List headers = session.createQuery("FROM HeaderModel").list();
         session.getTransaction().commit();

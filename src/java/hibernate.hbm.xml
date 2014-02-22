@@ -38,6 +38,7 @@
         <id column="header_id" name="header_id" type="int">
             <generator class="native"/>
         </id>
+        <property column="shows" name="shows" type="string"/>
         <property column="header_font_name" name="header_font_name" type="string"/>
         <property column="header_font_style" name="header_font_style" type="string"/>
         <property column="header_font_size" name="header_font_size" type="string"/>
@@ -54,6 +55,7 @@
         <id column="footer_id" name="footer_id" type="int">
             <generator class="native"/>
         </id>
+        <property column="shows" name="shows" type="string"/>
         <property column="" name="footer_font_name" type="string"/>
         <property column="footer_font_style" name="footer_font_style" type="string"/>
         <property column="footer_font_size" name="footer_font_size" type="string"/>
@@ -171,7 +173,7 @@
         <many-to-one class="SaleCD.model.FooterModel" column="footer_id" fetch="select" lazy="false" name="footerModel"/>
         <many-to-one class="SaleCD.model.MainMenuModel" column="main_menu_id" fetch="select" lazy="false" name="mainMenuModel"/>
         <many-to-one class="SaleCD.model.OtherMenuModel" column="other_menu_id" fetch="select" lazy="false" name="otherMenuModel"/>
-        <many-to-one class="SaleCD.model.UserMenuModel" column="user_menu_id" fetch="select" lazy="false" name="usermenuModel"/>
+        <many-to-one class="SaleCD.model.UserMenuModel" column="user_menu_id" fetch="select" lazy="false" name="userMenuModel"/>
         <many-to-one class="SaleCD.model.ContentMenuModel" column="content_menu_id" fetch="select" lazy="false" name="contentMenuModel"/>
         <many-to-one class="SaleCD.model.CompanyModel" column="company_id" fetch="select" lazy="false" name="companyModel"/>
         <many-to-one class="SaleCD.model.LevelModel" column="level_id" fetch="select" lazy="false" name="levelModel"/>

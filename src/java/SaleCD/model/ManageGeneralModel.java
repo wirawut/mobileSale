@@ -11,7 +11,7 @@ public class ManageGeneralModel extends Model {
     private FooterModel footerModel;
     private MainMenuModel mainMenuModel;
     private OtherMenuModel otherMenuModel;
-    private UserMenuModel usermenuModel;
+    private UserMenuModel userMenuModel;
     private ContentMenuModel contentMenuModel;
     private String fname;
     private String lname;
@@ -67,14 +67,13 @@ public class ManageGeneralModel extends Model {
         this.otherMenuModel = otherMenuModel;
     }
 
-    public UserMenuModel getUsermenuModel() {
-        return usermenuModel;
+    public UserMenuModel getUserMenuModel() {
+        return userMenuModel;
     }
 
-    public void setUsermenuModel(UserMenuModel usermenuModel) {
-        this.usermenuModel = usermenuModel;
+    public void setUserMenuModel(UserMenuModel userMenuModel) {
+        this.userMenuModel = userMenuModel;
     }
-
     public ContentMenuModel getContentMenuModel() {
         return contentMenuModel;
     }
@@ -198,15 +197,6 @@ public class ManageGeneralModel extends Model {
         return manageGeneralModels;
     }
 
-    public ManageGeneralModel find(int user_id) {
-        Session session = factory.openSession();
-        session.beginTransaction();
-        ManageGeneralModel manageGenerals = (ManageGeneralModel) session.get(ManageGeneralModel.class, user_id);
-        session.getTransaction().commit();
-        session.close();
-        return manageGenerals;
-    }
-
     public void save(ManageGeneralModel manageGeneralModel) {
         Session session = factory.openSession();
         session.beginTransaction();
@@ -221,5 +211,14 @@ public class ManageGeneralModel extends Model {
         session.update(manageGeneralModel);
         session.getTransaction().commit();
         session.close();
+    }
+
+    public ManageGeneralModel find(int user_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        ManageGeneralModel manage = (ManageGeneralModel) session.get(ManageGeneralModel.class, user_id);
+        session.getTransaction().commit();
+        session.close();
+        return manage;
     }
 }

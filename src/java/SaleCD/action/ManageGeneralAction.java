@@ -1,14 +1,17 @@
 package SaleCD.action;
 
+import SaleCD.model.CompanyModel;
 import SaleCD.model.ContentMenuModel;
 import SaleCD.model.FooterModel;
 import SaleCD.model.HeaderModel;
+import SaleCD.model.LevelModel;
 import SaleCD.model.MainMenuModel;
 import SaleCD.model.ManageGeneralModel;
 import static SaleCD.model.Model.factory;
 import SaleCD.model.OtherMenuModel;
 import SaleCD.model.UserMenuModel;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -23,6 +26,8 @@ public class ManageGeneralAction extends IndexAction {
     private List otherMenuList;
     private List userMenuList;
     private List contentMenuList;
+    private List companyList;
+    private List levelList;
     //Model 7 ตัว รวมคีนอกย์6
     private ManageGeneralModel manageGeneralModel;
     private HeaderModel headerModel;
@@ -31,6 +36,10 @@ public class ManageGeneralAction extends IndexAction {
     private OtherMenuModel otherMenuModel;
     private UserMenuModel usermenuModel;
     private ContentMenuModel contentMenuModel;
+    private CompanyModel companyModel;
+    private LevelModel levelModel;
+    //สำหรับเเสดงdropdown
+    private List listShow;
 
     public ManageGeneralAction() {
         //new ทุกตัว
@@ -41,6 +50,9 @@ public class ManageGeneralAction extends IndexAction {
         otherMenuList = new ArrayList();
         userMenuList = new ArrayList();
         contentMenuList = new ArrayList();
+        companyList = new ArrayList();
+        levelList = new ArrayList();
+
 
         manageGeneralModel = new ManageGeneralModel();
         headerModel = new HeaderModel();
@@ -49,6 +61,21 @@ public class ManageGeneralAction extends IndexAction {
         otherMenuModel = new OtherMenuModel();
         usermenuModel = new UserMenuModel();
         contentMenuModel = new ContentMenuModel();
+        companyModel = new CompanyModel();
+        levelModel = new LevelModel();
+
+
+        listShow = new ArrayList();
+        listShow.add("Block");
+        listShow.add("None");
+    }
+
+    public List getListShow() {
+        return listShow;
+    }
+
+    public void setListShow(List listShow) {
+        this.listShow = listShow;
     }
 
     public int getUser_id() {
@@ -171,23 +198,107 @@ public class ManageGeneralAction extends IndexAction {
         this.contentMenuModel = contentMenuModel;
     }
 
+    public List getCompanyList() {
+        return companyList;
+    }
+
+    public void setCompanyList(List companyList) {
+        this.companyList = companyList;
+    }
+
+    public List getLevelList() {
+        return levelList;
+    }
+
+    public void setLevelList(List levelList) {
+        this.levelList = levelList;
+    }
+
+    public CompanyModel getCompanyModel() {
+        return companyModel;
+    }
+
+    public void setCompanyModel(CompanyModel companyModel) {
+        this.companyModel = companyModel;
+    }
+
+    public LevelModel getLevelModel() {
+        return levelModel;
+    }
+
+    public void setLevelModel(LevelModel levelModel) {
+        this.levelModel = levelModel;
+    }
+
     public String index() {
         manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
     public String edit() {
-        manageGeneralModel = manageGeneralModel.find(user_id);
+        //ทำงานก่อน save
+
+        //ค้นหาข้อมูลที่เท่ากับ user_id ที่รับค่ามาจาก form ซึ่งมาจากค่า get url
+        manageGeneralModel = manageGeneralModel.find(getUser_id());
+        //ดึงข้อมูลที่เเสดงจากคีนอกย์เเต่ละตาราง มารวมใส่ใน manageGeneralModel เพื่อเป็นอันเดียวกัน เเล้วเก็บไว้ใน List เเต่ละอัน
+        //1 ดึงข้อมูลจาก HeaderModel เมธอด list มาใส่ในManageGeneralModel
+        headerList = manageGeneralModel.getHeaderModel().list();
+        footerList = manageGeneralModel.getFooterModel().list();
+        mainMenuList = manageGeneralModel.getMainMenuModel().list();
+        otherMenuList = manageGeneralModel.getOtherMenuModel().list();
+        userMenuList = manageGeneralModel.getUserMenuModel().list();
+        contentMenuList = manageGeneralModel.getContentMenuModel().list();
+        companyList = manageGeneralModel.getCompanyModel().list();
+        levelList = manageGeneralModel.getLevelModel().list();
+
+
+        //2 เอาไอดีจากเเต่ละตัวมา setให้ id ที่อยู่ใน model ของ ที่อยู่ใน managegeneralModelอีกที (คีนอกย์)
+        headerModel.setHeader_id(manageGeneralModel.getHeaderModel().getHeader_id());
+        footerModel.setFooter_id(manageGeneralModel.getFooterModel().getFooter_id());
+        mainMenuModel.setMain_menu_id(manageGeneralModel.getMainMenuModel().getMain_menu_id());
+        otherMenuModel.setOther_menu_id(manageGeneralModel.getOtherMenuModel().getOther_menu_id());
+        usermenuModel.setUser_menu_id(manageGeneralModel.getUserMenuModel().getUser_menu_id());
+        contentMenuModel.setContent_menu_id(manageGeneralModel.getContentMenuModel().getContent_menu_id());
+        companyModel.setCompany_id(manageGeneralModel.getCompanyModel().getCompany_id());
+        levelModel.setLevel_id(manageGeneralModel.getLevelModel().getLevel_id());
+
+        //เอาข้อมูลมาเเสดง
         manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
     public String save() {
-        if (user_id == 0) {
+//        if (user_id == 0) {
+            //เอาคีนอกที่setไว้เเล้วในเมธอด edit มาsetลงที่ manageGeneralModel 
+            Date birthDate = new Date();
+            Date date = new Date();
+            manageGeneralModel.setHeaderModel(headerModel);
+            manageGeneralModel.setFooterModel(footerModel);
+            manageGeneralModel.setMainMenuModel(mainMenuModel);
+            manageGeneralModel.setOtherMenuModel(otherMenuModel);
+            manageGeneralModel.setUserMenuModel(usermenuModel);
+            manageGeneralModel.setContentMenuModel(contentMenuModel);
+            manageGeneralModel.setFname("วิรวุฒิ");
+            manageGeneralModel.setLname("คำพันธ์");
+            manageGeneralModel.setBirthdate(birthDate);
+            manageGeneralModel.setSex("ชาย");
+            manageGeneralModel.setCompanyModel(companyModel);
+            manageGeneralModel.setAddress("52/2");
+            manageGeneralModel.setEmail("wirawut123345@gmail.com");
+            manageGeneralModel.setTel("088-8888888");
+            manageGeneralModel.setLevelModel(levelModel);
+            manageGeneralModel.setUsername("wirawut");
+            manageGeneralModel.setPassword("khampan");
+            manageGeneralModel.setImage("xxx.jpg");
+            manageGeneralModel.setDate(date);
+
+            //เมื่อ setค่า ทุกฟิล์ดเสร็จเเล้วก็พร้อมที่จะบันทึกครับ ก็เอาmanageGeneralModelไปบันทึกเลย
             manageGeneralModel.save(manageGeneralModel);
-        } else {
-            manageGeneralModel.update(manageGeneralModel);
-        }
+//        } else {
+//            manageGeneralModel.update(manageGeneralModel);
+//        }
+
+        //บันทึกเสร็จเเล้วต่อจากนั้นก็นำมาเเสดง
         manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
