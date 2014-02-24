@@ -6,7 +6,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
-<div class = "panel-heading" style = "font-weight: bold" ><img src="image/manageBasic.png" width="35" height="35"> ตั้งค่าพื้นฐาน </div>
+<div class = "panel-heading" style="font-size:  ${manageGeneralRow.contentMenuModel.font_size_header}; font-family : ${manageGeneralRow.contentMenuModel.font_name}; font-style:  ${manageGeneralRow.contentMenuModel.font_style}; font-weight: ${manageGeneralRow.contentMenuModel.font_weight_header}; color: ${manageGeneralRow.contentMenuModel.font_color_header};background-color: ${manageGeneralRow.contentMenuModel.background_color_header};"><img src="image/manageBasic.png" width="35" height="35"> <a href="ManageBasicIndex" > ตั้งค่าพื้นฐาน </a> </div>
 <div class = "panel-body"  id="showManageGeneral">
     <div class="bs-example">
         <div class="panel-group" id="accordion" >
@@ -16,7 +16,7 @@
                     <td>&nbsp;&nbsp;</td>
                     <td align="center" ><a href="LevelIndex"><img  src="image/level.png" title="ระดับผู้ใช้งาน" style="height: 50px ; width: 50px ;margin: 3px"></a>&nbsp;</td>
                     <td>&nbsp;&nbsp;</td>
-                    <td align="center" ><a href="TypeProductIndex"><img src="image/product_type.png" title="ประเภทสินค้า" style="height: 50px ; width: 50px ;margin: 3px"></a>&nbsp;</td>
+                    <td align="center" ><a href="ProductTypeIndex"><img src="image/product_type.png" title="ประเภทสินค้า" style="height: 50px ; width: 50px ;margin: 3px"></a>&nbsp;</td>
                     <td>&nbsp;&nbsp;</td>
                     <td align="center" ><a href="UnitIndex"><img src="image/unit.png" title="หน่วยนับสินค้า" style="height: 50px ; width: 50px ;margin: 3px"></a>&nbsp;</td>
                     <td>&nbsp;&nbsp;</td>
@@ -27,7 +27,7 @@
                     <td>&nbsp;&nbsp;</td>
                     <td align="center"><a href="LevelIndex">ระดับผู้ใช้งาน</a></td>
                     <td>&nbsp;&nbsp;</td>
-                    <td align="center"><a href="typeProductIndex">ประเภทสินค้า</a></td>
+                    <td align="center"><a href="ProductTypeIndex">ประเภทสินค้า</a></td>
                     <td>&nbsp;&nbsp;</td>
                     <td align="center"><a href="UnitIndex">หน่วยนับสินค้า</a></td>
                     <td>&nbsp;&nbsp;</td>

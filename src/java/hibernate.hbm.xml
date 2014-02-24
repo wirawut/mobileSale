@@ -23,6 +23,36 @@
         <property column="date" name="date" type="date"/>
     </class>
     
+    <!--mobileType-->
+    <class name="SaleCD.model.MobileTypeModel" table="tb_mobile_type">
+        <id column="mobile_type_id" name="mobile_type_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="mobile_type" name="mobile_type" type="string"/>
+        <property column="detail" name="detail" type="string"/>
+        <property column="date" name="date" type="date"/>
+    </class>
+    
+    <!--simType-->
+    <class name="SaleCD.model.SimTypeModel" table="tb_sim_type">
+        <id column="sim_type_id" name="sim_type_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="sim_type" name="sim_type" type="string"/>
+        <property column="detail" name="detail" type="string"/>
+        <property column="date" name="date" type="date"/>
+    </class>
+    
+    <!--otherType-->
+    <class name="SaleCD.model.OtherTypeModel" table="tb_other_type">
+        <id column="other_type_id" name="other_type_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="other_type" name="other_type" type="string"/>
+        <property column="detail" name="detail" type="string"/>
+        <property column="date" name="date" type="date"/>
+    </class>
+    
     <!--level-->
     <class name="SaleCD.model.LevelModel" table="tb_level">
         <id column="level_id" name="level_id" type="int">

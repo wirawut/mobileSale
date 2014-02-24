@@ -69,7 +69,7 @@ public class UnitModel extends Model {
         return units;
     }
 
-    public void update(UnitModel unitModel) {
+    public void update(UnitModel unitModel,int unit_id) {
         Session session = factory.openSession();
         session.beginTransaction();
         session.update(unitModel);

@@ -1,18 +1,38 @@
 package SaleCD.action;
 
 import SaleCD.model.LevelModel;
+import SaleCD.model.ManageGeneralModel;
 import SaleCD.model.UnitModel;
 import java.util.Date;
 import java.util.List;
 
-public class LevelAction {
+public class LevelAction extends IndexAction{
 
     private int level_id;
     private LevelModel levelModel;
     private List levelList;
+    private List manageGeneralList;
+    private ManageGeneralModel manageGeneralModel;
 
     public LevelAction() {
+        manageGeneralModel = new ManageGeneralModel();
         levelModel = new LevelModel();
+    }
+
+    public List getManageGeneralList() {
+        return manageGeneralList;
+    }
+
+    public void setManageGeneralList(List manageGeneralList) {
+        this.manageGeneralList = manageGeneralList;
+    }
+
+    public ManageGeneralModel getManageGeneralModel() {
+        return manageGeneralModel;
+    }
+
+    public void setManageGeneralModel(ManageGeneralModel manageGeneralModel) {
+        this.manageGeneralModel = manageGeneralModel;
     }
 
     public int getLevel_id() {
@@ -41,6 +61,7 @@ public class LevelAction {
 
     public String index() {
         levelList = levelModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 

@@ -2,24 +2,24 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <script>
     $(function() {
-       
+
     });
 </script>
-<div class="panel-heading" style="font-weight: bold"><img src="image/unit.png" title="หน่วยนับสินค้า" style="height: 35px ; width: 35px ;margin: 3px"> หน่วยนับสินค้า</div>
+<div class="panel-heading" style="font-size:  ${manageGeneralRow.contentMenuModel.font_size_header}; font-family : ${manageGeneralRow.contentMenuModel.font_name}; font-style:  ${manageGeneralRow.contentMenuModel.font_style}; font-weight: ${manageGeneralRow.contentMenuModel.font_weight_header}; color: ${manageGeneralRow.contentMenuModel.font_color_header};background-color: ${manageGeneralRow.contentMenuModel.background_color_header};"><img src="image/unit.png" title="หน่วยนับสินค้า" style="height: 35px ; width: 35px ;margin: 3px"> หน่วยนับสินค้า</div>
 <div class="panel-body">
-    <a class="btn btn-info" href="">
+    <a class="btn btn-info" href="UnitAdd">
         <img src="image/add.png" width="35" height="35"> เพิ่ม
     </a> <br/><br/>
-    <div class="table-responsive" style=" height: 550px; overflow: auto;">
+    <div class="table-responsive" style=" height: 370px; overflow: auto; ">
         <table class="table table-hover table-bordered table-striped table-responsive" >
             <thead >
                 <tr>
                     <th><center>ลำดับ</center></th>
-                    <th>หน่วยนับสินค้า</th>
-                    <th>รายละเอียด</th>
-                    <th>วันที่บันทึก</th>
-                    <th>การกระทำ</th>
-                </tr>
+            <th>หน่วยนับสินค้า</th>
+            <th>รายละเอียด</th>
+            <th>วันที่บันทึก</th>
+            <th></th>
+            </tr>
             </thead>
             <tbody>
                 <%int i = 1;%>

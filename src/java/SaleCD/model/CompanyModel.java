@@ -80,7 +80,7 @@ public class CompanyModel extends Model {
         return companys;
     }
 
-    public void update(CompanyModel companyModel) {
+    public void update(CompanyModel companyModel,int company_id) {
         Session session = factory.openSession();
         session.beginTransaction();
         session.update(companyModel);

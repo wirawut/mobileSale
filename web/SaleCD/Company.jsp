@@ -1,82 +1,64 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-
-<table>
-    <tr>
-        <td width="170px" align="right">ชื่อบริษัท : &nbsp; </td>
-        <td><form class="pure-form"><input type="text" placeholder="ระบุชื่อบริษัท" required></form></td>
-    </tr>
-     <tr><td></td></tr>
-    <tr>
-        <td align="right">ที่อยู่ : &nbsp;</td>
-        <td><form class="pure-form"><input type="text" placeholder="ระบุที่อยู่" required></form></td>
-    </tr>
-     <tr><td></td></tr>
-    <tr>
-        <td align="right">เบอร์โทร : &nbsp;</td>
-        <td><form class="pure-form"><input type="text" placeholder="ระบุเบอร์โทร" required></form></td>
-    </tr>
-    <tr>
-        <td align="right">แฟกซ์ : &nbsp;</td>
-        <td><form class="pure-form"><input type="text" placeholder="ระบุแฟกซ์" required></form></td>
-    </tr>
-     <tr><td></td></tr>
-    <tr>
-        <td align="right">เลขประจำตัวผู้เสียภาษี : &nbsp;</td>
-        <td><form class="pure-form"><input type="text" placeholder="ระบุเลขประจำตัวผู้เสียภาษี" required></form></td>
-    </tr>
-     <tr><td></td></tr>
-    <tr>
-        <td align="right">วันที่บันทึก : &nbsp;</td>
-        <td><form class="pure-form"><input type="text" placeholder="เลือกวันที่วันที่บันทึก" required></form></td>
-    </tr>
-    <tr><td><br/></td></tr>
-    <tr>
-        <td colspan="2" >
-            <a class="btn btn-info" href="companySave?id=${companyRow.company_id}" style="width: 60px ; margin-left: 172px">
-                <i class="icon-shopping-cart icon-large"></i>
-                บันทึก
-            </a>
-            <a class="btn btn-info" href="companyCancel?id=${companyRow.company_id}" style="width: 60px">
-                <i class="icon-shopping-cart icon-large"></i>
-                ยกเลิก
-            </a>
-        </td>
-    </tr>
-</table> 
-<br>
-<table class="table" width="100%" style="font: 16px TH Saraban new;">
-
-    <thead >
-        <tr style="font: 16px TH Saraban new;">
-            <th>ชื่อบริษัท</th>
-            <th>ที่อยู่</th>
-            <th>เบอร์โทร</th>
-            <th>แฟกซ์</th>
-            <th>เลขประจำตัวผู้เสียภาษี</th>
-            <th>วันที่บันทึก</th>
-            <th></th>
-    
-        </tr>
-    </thead>
-    <tbody>
-        <s:iterator value="companyList" var="companyRow">
-            <tr>
-                <td>${companyRow.company_name}</td>
-                <td>${companyRow.company_address}</td>
-                <td>${companyRow.tel}</td>
-                <td>${companyRow.fax}</td>
-                <td>${companyRow.tax_number}</td>
-                <td>${companyRow.date}</td>
-                <td colspan="2">  
-                    <a href="companyDelete?id=${companyRow.company_id}" class="btn btn-info" >แก้ไข</a>
-                    <a class="pure-button pure-button-large pure-button-error" href="companyDelete?id=${companyRow.company_id}" style="width: 60px">
-                        <i class="icon-shopping-cart icon-large"></i>
-                        ลบ
-                    </a>
-                </td>
-            </tr>
-        </s:iterator>
-    </tbody>
-</table>
-
+<!DOCTYPE html>
+<div class = "panel-heading" style="font-size:  ${manageGeneralRow.contentMenuModel.font_size_header}; font-family : ${manageGeneralRow.contentMenuModel.font_name}; font-style:  ${manageGeneralRow.contentMenuModel.font_style}; font-weight: ${manageGeneralRow.contentMenuModel.font_weight_header}; color: ${manageGeneralRow.contentMenuModel.font_color_header};background-color: ${manageGeneralRow.contentMenuModel.background_color_header};" ><img src="image/company.png" width="35" height="35"> จัดการบริษัท</div>
+<div class = "panel-body"  id="showManageGeneral">
+    <div class="bs-example">
+        <div class="panel-group" id="accordion" >
+            
+            <s:form action="CompanySave" theme="simple">
+                <s:hidden name="companyModel.company_id" />
+                <table width="70%" align="center">
+                    <tr>
+                        <td align="right" width="145px">ชื่อบริษัท : </td>
+                        <td class="form-group has-success">
+                            <s:textfield name="companyModel.company_name" cssClass="form-control" cssStyle="height: 40px;" />
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td align="right">ที่อยู่ : </td>
+                        <td class="form-group has-success">
+                            <s:textfield name="companyModel.company_address" cssClass="form-control" cssStyle="height: 40px;" />
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td align="right">เบอร์โทร : </td>
+                        <td class="form-group has-success">
+                            <s:textfield name="companyModel.tel" cssClass="form-control" cssStyle="height: 40px;" />
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td align="right">แฟกซ์ : </td>
+                        <td class="form-group has-success">
+                            <s:textfield name="companyModel.fax" cssClass="form-control" cssStyle="height: 40px;" />
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td align="right">เลขประจำตัวผู้เสียภาษี : </td>
+                        <td class="form-group has-success">
+                            <s:textfield name="companyModel.tax_number" cssClass="form-control" cssStyle="height: 40px;" />
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td></td>
+                        <td style="margin-left: 200px;">
+                            <s:submit type="button" cssClass="btn btn-info" >
+                                <img src="image/save.png" width="35px" height="35px"> บันทึก
+                            </s:submit>
+                            <a type="button" href="CompanyIndex" class="btn btn-info">
+                                <img src="image/cancel.png" width="35" height="35"> ยกเลิก
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </s:form>
+        </div>
+    </div>
+</div>

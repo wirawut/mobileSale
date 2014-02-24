@@ -6,16 +6,20 @@
     <include file="example.xml"/>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        <!--company-->
+        <!--homeIndex-->
         <action name="HomeIndex" class="SaleCD.action.HomeAction" method="index">
-            <result name="SUCCESS" >index.jsp</result>
-             <param name="url">SaleCD/Home.jsp</param>
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/Home.jsp</param>
         </action>
+        <!--company-->
         <action name="CompanyIndex" class="SaleCD.action.CompanyAction" method="index">
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/Company.jsp</param>
         </action>
-        
+        <action name="CompanySave" class="SaleCD.action.CompanyAction" method="save">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/Company.jsp</param>
+        </action>
         <!--unit-->
         <action name="UnitIndex" class="SaleCD.action.UnitAction" method="index">
             <result name="SUCCESS">index.jsp</result>
@@ -36,7 +40,19 @@
         <!--Level-->
         <action name="LevelIndex" class="SaleCD.action.LevelAction" method="index">
             <result name ="SUCCESS" >index.jsp</result>
-            <param name="url" >SaleCD/ManageGeneral.jsp</param>
+            <param name="url" >/SaleCD/Level.jsp</param>
+        </action>
+        <action name="LevelSave" class="SaleCD.action.LevelAction" method="save">
+            <result name ="SUCCESS" >index.jsp</result>
+            <param name="url" >/SaleCD/Level.jsp</param>
+        </action>
+        <action name="LevelDelete" class="SaleCD.action.LevelAction" method="delete">
+            <result name ="SUCCESS" >index.jsp</result>
+            <param name="url" >/SaleCD/Level.jsp</param>
+        </action>
+        <action name="LevelEdit" class="SaleCD.action.LevelAction" method="edit">
+            <result name ="SUCCESS" >index.jsp</result>
+            <param name="url" >/SaleCD/Level.jsp</param>
         </action>
         <!--mainMenu-->
         <action name="MainMenuIndex" class="SaleCD.action.MainMenuAction" method="index">
@@ -68,7 +84,6 @@
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/ManageGeneral.jsp</param>
         </action>
-        
         <action name="ManageGeneralSave" class="SaleCD.action.ManageGeneralAction" method="save">
             <result name="SUCCESS" type="redirect">
                 <param name="location">ManageGeneralIndex</param>
@@ -141,17 +156,36 @@
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/ManageGeneral.jsp</param>
         </action>
-        
-       <!--stock-->
+        <!--stock-->
         <action name="StockIndex" class="SaleCD.action.StockAction" method="index">
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SalCD/Stock.jsp</param>
         </action>
-        
         <!--manageBasic-->
         <action name="ManageBasicIndex" class="SaleCD.action.ManageBasicAction" method="index">
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/ManageBasic.jsp</param>
+        </action>
+        
+        <!--ProductTypeIndex-->
+        <action name="ProductTypeIndex" class="SaleCD.action.ProductTypeAction"  method="index">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/ProductType.jsp</param>
+        </action>
+        <!--MobileType-->
+        <action name="MobileTypeIndex" class="SaleCD.action.MobileTypeAction" method="index">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/MobileType.jsp</param>
+        </action>
+        <!--SimType-->      
+        <action name="SimTypeIndex" class="SaleCD.action.SimTypeAction" method="index">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/SimType.jsp</param>
+        </action>
+        <!--OtherType-->
+        <action name="OtherTypeIndex" class="SaleCD.action.OtherTypeAction" method="index">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/OtherType.jsp</param>
         </action>
     </package>
 </struts>

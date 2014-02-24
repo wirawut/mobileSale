@@ -14,7 +14,11 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <script type="text/javascript">
+            //ห้ามคลิกขวา
             $(function() {
+                $(this).bind("contextmenu", function(e) {
+                    e.preventDefault();
+                });
                 $("#header").load("header.jsp");
                 $("#footer").load("footer.jsp");
                 $("#menuLeft").load("menuLeft.jsp");
@@ -36,7 +40,7 @@
                                     <li><a href="SaleIndex" style="font-size: ${manageGeneralRow.mainMenuModel.font_size_detail};font-weight: ${manageGeneralRow.mainMenuModel.font_weight_detail}; color: ${manageGeneralRow.mainMenuModel.font_color_detail};font-family: ${manageGeneralRow.mainMenuModel.font_name};font-style: ${manageGeneralRow.mainMenuModel.font_style};background-color: ${manageGeneralRow.mainMenuModel.background_color_detail};"><img src="image/cart.png" width="35" height="35"> ขาย</a></li>
                                     <li><a href="StockIndex" style="font-size: ${manageGeneralRow.mainMenuModel.font_size_detail};font-weight: ${manageGeneralRow.mainMenuModel.font_weight_detail}; color: ${manageGeneralRow.mainMenuModel.font_color_detail};font-family: ${manageGeneralRow.mainMenuModel.font_name};font-style: ${manageGeneralRow.mainMenuModel.font_style};background-color: ${manageGeneralRow.mainMenuModel.background_color_detail};" ><img src="image/mobile.png" width="35" height="35"> คลังสินค้า</a></li>
                                     <li><a href="ReportIndex" style="font-size: ${manageGeneralRow.mainMenuModel.font_size_detail};font-weight: ${manageGeneralRow.mainMenuModel.font_weight_detail}; color: ${manageGeneralRow.mainMenuModel.font_color_detail};font-family: ${manageGeneralRow.mainMenuModel.font_name};font-style: ${manageGeneralRow.mainMenuModel.font_style};background-color: ${manageGeneralRow.mainMenuModel.background_color_detail};" ><img src="image/report.png" width="35" height="35">  รายงาน</a></li>
-                                     <li><a href="ReportIndex" style="font-size: ${manageGeneralRow.mainMenuModel.font_size_detail};font-weight: ${manageGeneralRow.mainMenuModel.font_weight_detail}; color: ${manageGeneralRow.mainMenuModel.font_color_detail};font-family: ${manageGeneralRow.mainMenuModel.font_name};font-style: ${manageGeneralRow.mainMenuModel.font_style};background-color: ${manageGeneralRow.mainMenuModel.background_color_detail};" ><img src="image/forecast.png" width="35" height="35">  พยากรณ์ยอดขาย</a></li>
+                                    <li><a href="ReportIndex" style="font-size: ${manageGeneralRow.mainMenuModel.font_size_detail};font-weight: ${manageGeneralRow.mainMenuModel.font_weight_detail}; color: ${manageGeneralRow.mainMenuModel.font_color_detail};font-family: ${manageGeneralRow.mainMenuModel.font_name};font-style: ${manageGeneralRow.mainMenuModel.font_style};background-color: ${manageGeneralRow.mainMenuModel.background_color_detail};" ><img src="image/forecast.png" width="35" height="35">  พยากรณ์ยอดขาย</a></li>
                                     <li><a href="ManageBasicIndex" style="font-size: ${manageGeneralRow.mainMenuModel.font_size_detail};font-weight: ${manageGeneralRow.mainMenuModel.font_weight_detail}; color: ${manageGeneralRow.mainMenuModel.font_color_detail};font-family: ${manageGeneralRow.mainMenuModel.font_name};font-style: ${manageGeneralRow.mainMenuModel.font_style};background-color: ${manageGeneralRow.mainMenuModel.background_color_detail};"><img src="image/manageBasic.png" width="35" height="35">  ตั้งค่าพื้นฐาน</a></li>
                                 </ul>
                             </div>

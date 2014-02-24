@@ -1,50 +1,41 @@
-<%-- 
-    Document   : UnitForm
-    Created on : Feb 22, 2014, 1:16:49 PM
-    Author     : Administrator
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
-
-
 <div class = "panel-heading" style = "font-weight: bold" ><img src="image/unit.png" width="35" height="35"> จัดการหน่วยนับ</div>
 <div class = "panel-body"  id="showManageGeneral">
     <div class="bs-example">
         <div class="panel-group" id="accordion" >
 
             <s:form action="UnitSave" theme="simple">
-                <table width="40%" align="center">
+                <table width="60%" align="center">
                     <tr>
+                        <td align="right">หน่วยนับ : </td>
                         <td class="form-group has-success">
-                            <s:label cssClass="control-label" for="inputSuccess1">หน่วยนับ : </s:label>
-                            <s:textfield name="unitModel.unit" cssClass="form-control" width="350px" height="40px" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="form-group has-success">
-                            <s:label cssClass="control-label" for="inputSuccess1">รายละเอียด : </s:label>
-                            <s:textfield name="unitModel.detail" cssClass="form-control" height="40px" />
+                            <s:textfield name="unitModel.unit" cssClass="form-control" cssStyle="height: 40px;" />
                         </td>
                     </tr>
                     <tr><td></td></tr>
                     <tr>
-                        <td align="center">
-                            <s:a action="UnitSave" cssClass="btn btn-info">
-                                <span><img src="image/save.png" width="35" height="35"> </span>
-                                
-                             บันทึก
-                            </s:a>
-                            <button type="button" class="btn btn-primary">
-                                <img src="image/cancel.png" width="35" height="35"> ยกเลิก
-                            </button>
+                        <td align="right">รายละเอียด : </td>
+                        <td class="form-group has-success">
+                            <s:textfield name="unitModel.detail" cssClass="form-control" cssStyle="height: 40px;" />
                         </td>
-
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td></td>
+                        <td style="margin-left: 200px;">
+                            <s:submit type="button" cssClass="btn btn-info" >
+                                <img src="image/save.png" width="35px" height="35px"> บันทึก
+                            </s:submit>
+                            <a type="button" href="UnitIndex" class="btn btn-info">
+                                <img src="image/cancel.png" width="35" height="35"> ยกเลิก
+                            </a>
+                        </td>
                     </tr>
                 </table>
             </s:form>
-
         </div>
     </div>
 </div>

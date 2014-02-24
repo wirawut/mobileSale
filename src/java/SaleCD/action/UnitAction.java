@@ -66,15 +66,16 @@ public class UnitAction extends IndexAction {
     }
 
     public String save() {
+       UnitModel oldIncomeModel = unitModel.find(unit_id);
+            unitModel.setUnit_id(unit_id);
         if (unit_id == 0) {
             Date createdDate = new Date();
             unitModel.setDate(createdDate);
             unitModel.save(unitModel);
         } else {
-            UnitModel oldIncomeModel = unitModel.find(unit_id);
-            unitModel.setUnit_id(unit_id);
+            
             unitModel.setDate(oldIncomeModel.getDate());
-            unitModel.update(unitModel);
+            unitModel.update(unitModel,unit_id);
         }
         unitList = unitModel.list();
         manageGeneralList = manageGeneralModel.list();
@@ -83,14 +84,14 @@ public class UnitAction extends IndexAction {
 
     public String edit() {
         unitModel = unitModel.find(unit_id);
-        unitList =unitModel.list();
+        unitList = unitModel.list();
         manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
     public String delete() {
         unitModel.delete(unit_id);
-        unitList= unitModel.list();
+        unitList = unitModel.list();
         manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }

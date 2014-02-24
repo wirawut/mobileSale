@@ -36,7 +36,7 @@
     }
 </style>
 <s:hidden id = "user_id" name="user_id" />
-<div class = "panel-heading" style = "font-weight: bold" ><span class="glyphicon glyphicon-adjust"></span> ตั้งค่าทั่วไป </div>
+<div class = "panel-heading" style="font-size:  ${manageGeneralRow.contentMenuModel.font_size_header}; font-family : ${manageGeneralRow.contentMenuModel.font_name}; font-style:  ${manageGeneralRow.contentMenuModel.font_style}; font-weight: ${manageGeneralRow.contentMenuModel.font_weight_header}; color: ${manageGeneralRow.contentMenuModel.font_color_header};background-color: ${manageGeneralRow.contentMenuModel.background_color_header};"><img src="image/manageGeneral.png" title="ตั้งค่าทั่วไป" style="height: 35px ; width: 35px ;margin: 3px"> ตั้งค่าทั่วไป </div>
 
 <div class = "panel-body"  id="showManageGeneral">
     <div class="bs-example">
