@@ -34,7 +34,7 @@ public class ManageGeneralAction extends IndexAction {
     private FooterModel footerModel;
     private MainMenuModel mainMenuModel;
     private OtherMenuModel otherMenuModel;
-    private UserMenuModel usermenuModel;
+    private UserMenuModel userMenuModel;
     private ContentMenuModel contentMenuModel;
     private CompanyModel companyModel;
     private LevelModel levelModel;
@@ -59,7 +59,7 @@ public class ManageGeneralAction extends IndexAction {
         footerModel = new FooterModel();
         mainMenuModel = new MainMenuModel();
         otherMenuModel = new OtherMenuModel();
-        usermenuModel = new UserMenuModel();
+        userMenuModel = new UserMenuModel();
         contentMenuModel = new ContentMenuModel();
         companyModel = new CompanyModel();
         levelModel = new LevelModel();
@@ -182,16 +182,12 @@ public class ManageGeneralAction extends IndexAction {
         this.otherMenuModel = otherMenuModel;
     }
 
-    public UserMenuModel getUsermenuModel() {
-        return usermenuModel;
+    public UserMenuModel getUserMenuModel() {
+        return userMenuModel;
     }
 
-    public void setUsermenuModel(UserMenuModel usermenuModel) {
-        this.usermenuModel = usermenuModel;
-    }
-
-    public ContentMenuModel getContentMenuModel() {
-        return contentMenuModel;
+    public void setUserMenuModel(UserMenuModel userMenuModel) {
+        this.userMenuModel = userMenuModel;
     }
 
     public void setContentMenuModel(ContentMenuModel contentMenuModel) {
@@ -257,7 +253,7 @@ public class ManageGeneralAction extends IndexAction {
         footerModel.setFooter_id(manageGeneralModel.getFooterModel().getFooter_id());
         mainMenuModel.setMain_menu_id(manageGeneralModel.getMainMenuModel().getMain_menu_id());
         otherMenuModel.setOther_menu_id(manageGeneralModel.getOtherMenuModel().getOther_menu_id());
-        usermenuModel.setUser_menu_id(manageGeneralModel.getUserMenuModel().getUser_menu_id());
+        userMenuModel.setUser_menu_id(manageGeneralModel.getUserMenuModel().getUser_menu_id());
         contentMenuModel.setContent_menu_id(manageGeneralModel.getContentMenuModel().getContent_menu_id());
         companyModel.setCompany_id(manageGeneralModel.getCompanyModel().getCompany_id());
         levelModel.setLevel_id(manageGeneralModel.getLevelModel().getLevel_id());
@@ -269,31 +265,31 @@ public class ManageGeneralAction extends IndexAction {
 
     public String save() {
 //        if (user_id == 0) {
-            //เอาคีนอกที่setไว้เเล้วในเมธอด edit มาsetลงที่ manageGeneralModel 
-            Date birthDate = new Date();
-            Date date = new Date();
-            manageGeneralModel.setHeaderModel(headerModel);
-            manageGeneralModel.setFooterModel(footerModel);
-            manageGeneralModel.setMainMenuModel(mainMenuModel);
-            manageGeneralModel.setOtherMenuModel(otherMenuModel);
-            manageGeneralModel.setUserMenuModel(usermenuModel);
-            manageGeneralModel.setContentMenuModel(contentMenuModel);
-            manageGeneralModel.setFname("วิรวุฒิ");
-            manageGeneralModel.setLname("คำพันธ์");
-            manageGeneralModel.setBirthdate(birthDate);
-            manageGeneralModel.setSex("ชาย");
-            manageGeneralModel.setCompanyModel(companyModel);
-            manageGeneralModel.setAddress("52/2");
-            manageGeneralModel.setEmail("wirawut123345@gmail.com");
-            manageGeneralModel.setTel("088-8888888");
-            manageGeneralModel.setLevelModel(levelModel);
-            manageGeneralModel.setUsername("wirawut");
-            manageGeneralModel.setPassword("khampan");
-            manageGeneralModel.setImage("xxx.jpg");
-            manageGeneralModel.setDate(date);
+        //เอาคีนอกที่setไว้เเล้วในเมธอด edit มาsetลงที่ manageGeneralModel 
+        Date birthDate = new Date();
+        Date date = new Date();
+        manageGeneralModel.setHeaderModel(headerModel);
+        manageGeneralModel.setFooterModel(footerModel);
+        manageGeneralModel.setMainMenuModel(mainMenuModel);
+        manageGeneralModel.setOtherMenuModel(otherMenuModel);
+        manageGeneralModel.setUserMenuModel(userMenuModel);
+        manageGeneralModel.setContentMenuModel(contentMenuModel);
+        manageGeneralModel.setFname("วิรวุฒิ");
+        manageGeneralModel.setLname("คำพันธ์");
+        manageGeneralModel.setBirthdate(birthDate);
+        manageGeneralModel.setSex("ชาย");
+        manageGeneralModel.setCompanyModel(companyModel);
+        manageGeneralModel.setAddress("52/2");
+        manageGeneralModel.setEmail("wirawut123345@gmail.com");
+        manageGeneralModel.setTel("088-8888888");
+        manageGeneralModel.setLevelModel(levelModel);
+        manageGeneralModel.setUsername("wirawut");
+        manageGeneralModel.setPassword("khampan");
+        manageGeneralModel.setImage("xxx.jpg");
+        manageGeneralModel.setDate(date);
 
-            //เมื่อ setค่า ทุกฟิล์ดเสร็จเเล้วก็พร้อมที่จะบันทึกครับ ก็เอาmanageGeneralModelไปบันทึกเลย
-            manageGeneralModel.save(manageGeneralModel);
+        //เมื่อ setค่า ทุกฟิล์ดเสร็จเเล้วก็พร้อมที่จะบันทึกครับ ก็เอาmanageGeneralModelไปบันทึกเลย
+        manageGeneralModel.save(manageGeneralModel);
 //        } else {
 //            manageGeneralModel.update(manageGeneralModel);
 //        }

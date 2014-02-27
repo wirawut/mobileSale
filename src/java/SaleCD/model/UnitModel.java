@@ -81,8 +81,8 @@ public class UnitModel extends Model {
     public void delete(int unit_id) {
         Session session = factory.openSession();
         session.beginTransaction();
-        UnitModel units = (UnitModel) session.get(UnitModel.class, unit_id);
-        session.delete(units);
+        UnitModel u = (UnitModel) session.get(UnitModel.class, unit_id);
+        session.delete(u);
         session.getTransaction().commit();
         session.close();
     }

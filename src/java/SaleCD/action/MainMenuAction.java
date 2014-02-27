@@ -1,16 +1,51 @@
-
 package SaleCD.action;
 
 import SaleCD.model.MainMenuModel;
+import SaleCD.model.ManageGeneralModel;
+import java.util.ArrayList;
 import java.util.List;
 
-public class MainMenuAction {
+public class MainMenuAction extends IndexAction {
+
     private int main_menu_id;
     private MainMenuModel mainMenuModel;
     private List mainMenuList;
-    
-    public MainMenuAction(){
-    mainMenuModel = new MainMenuModel();
+    private List manageGeneralList;
+    private ManageGeneralModel manageGeneralModel;
+    private List mainMenuShowList;
+
+    public MainMenuAction() {
+        manageGeneralModel = new ManageGeneralModel();
+        mainMenuModel = new MainMenuModel();
+
+        //เอาอะเรย์ไปเเสดงบน dropdown
+        mainMenuShowList = new ArrayList();
+        mainMenuShowList.add("Block");
+        mainMenuShowList.add("None");
+    }
+
+    public List getMainMenuShowList() {
+        return mainMenuShowList;
+    }
+
+    public void setMainMenuShowList(List mainMenuShowList) {
+        this.mainMenuShowList = mainMenuShowList;
+    }
+
+    public List getManageGeneralList() {
+        return manageGeneralList;
+    }
+
+    public void setManageGeneralList(List manageGeneralList) {
+        this.manageGeneralList = manageGeneralList;
+    }
+
+    public ManageGeneralModel getManageGeneralModel() {
+        return manageGeneralModel;
+    }
+
+    public void setManageGeneralModel(ManageGeneralModel manageGeneralModel) {
+        this.manageGeneralModel = manageGeneralModel;
     }
 
     public int getMain_menu_id() {
@@ -36,8 +71,9 @@ public class MainMenuAction {
     public void setMainMenuList(List mainMenuList) {
         this.mainMenuList = mainMenuList;
     }
-    
+
     public String index() {
+        manageGeneralList = manageGeneralModel.list();
         mainMenuList = mainMenuModel.list();
         return "SUCCESS";
     }
@@ -48,8 +84,9 @@ public class MainMenuAction {
             mainMenuModel.save(mainMenuModel);
         } else {
             mainMenuModel.update(mainMenuModel);
-           setMain_menu_id(0);
+            setMain_menu_id(0);
         }
+        manageGeneralList = manageGeneralModel.list();
         mainMenuList = mainMenuModel.list();
         return "SUCCESS";
     }
@@ -57,6 +94,7 @@ public class MainMenuAction {
     public String edit() {
         mainMenuModel = mainMenuModel.find(main_menu_id);
         mainMenuList = mainMenuModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 

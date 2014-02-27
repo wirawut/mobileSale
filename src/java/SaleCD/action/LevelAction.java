@@ -6,7 +6,7 @@ import SaleCD.model.UnitModel;
 import java.util.Date;
 import java.util.List;
 
-public class LevelAction extends IndexAction{
+public class LevelAction extends IndexAction {
 
     private int level_id;
     private LevelModel levelModel;
@@ -66,27 +66,31 @@ public class LevelAction extends IndexAction{
     }
 
     public String save() {
+        Date date = new Date();
         if (level_id == 0) {
-            Date createdDate = new Date();
-            levelModel.setDate_save(createdDate);
+            levelModel.setDate_save(date);
             levelModel.save(levelModel);
         } else {
-            LevelModel oldLevelModel = levelModel.find(level_id);
-            levelModel.setLevel_id(level_id);
-            levelModel.setDate_save(oldLevelModel.getDate_save());
-            levelModel.update(levelModel);
+            levelModel.setDate_save(date);
+            levelModel.update(levelModel, level_id);
+            setLevel_id(0);
         }
+        manageGeneralList = manageGeneralModel.list();
+        levelList = levelModel.list();
         return "SUCCESS";
     }
 
     public String edit() {
         levelModel = levelModel.find(level_id);
         levelList = levelModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
     public String delete() {
         levelModel.delete(level_id);
+        levelList = levelModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 }

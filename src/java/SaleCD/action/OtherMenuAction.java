@@ -1,20 +1,35 @@
-
 package SaleCD.action;
 
 import SaleCD.model.ManageGeneralModel;
 import SaleCD.model.OtherMenuModel;
+import java.util.ArrayList;
 import java.util.List;
 
-public class OtherMenuAction {
+public class OtherMenuAction extends IndexAction {
+
     private int other_menu_id;
     private List otherMenuList;
     private OtherMenuModel otherMenuModel;
-    public List manageGeneralList;
-    public ManageGeneralModel manageGeneralModel;
-    
-    public OtherMenuAction(){
-    otherMenuModel = new OtherMenuModel();
-    manageGeneralModel = new ManageGeneralModel();
+    private List manageGeneralList;
+    private ManageGeneralModel manageGeneralModel;
+    private List otherMenuShowList;
+
+    public OtherMenuAction() {
+        otherMenuModel = new OtherMenuModel();
+        manageGeneralModel = new ManageGeneralModel();
+
+        //เพิ่มข้อมูลใส่อาเรยลิสเเล้วเอาไปใส่dropdown
+        otherMenuShowList = new ArrayList();
+        otherMenuShowList.add("Block");
+        otherMenuShowList.add("None");
+    }
+
+    public List getOtherMenuShowList() {
+        return otherMenuShowList;
+    }
+
+    public void setOtherMenuShowList(List otherMenuShowList) {
+        this.otherMenuShowList = otherMenuShowList;
     }
 
     public int getOther_menu_id() {
@@ -56,8 +71,10 @@ public class OtherMenuAction {
     public void setOtherMenuModel(OtherMenuModel otherMenuModel) {
         this.otherMenuModel = otherMenuModel;
     }
-      public String index() {
+
+    public String index() {
         otherMenuList = otherMenuModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
@@ -67,8 +84,9 @@ public class OtherMenuAction {
             otherMenuModel.save(otherMenuModel);
         } else {
             otherMenuModel.update(otherMenuModel, other_menu_id);
-            setOther_menu_id(other_menu_id);
+            setOther_menu_id(0);
         }
+        otherMenuList = otherMenuModel.list();
         manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
@@ -76,6 +94,7 @@ public class OtherMenuAction {
     public String edit() {
         otherMenuModel = otherMenuModel.find(other_menu_id);
         otherMenuList = otherMenuModel.list();
+        manageGeneralList=manageGeneralModel.list();
         return "SUCCESS";
     }
 

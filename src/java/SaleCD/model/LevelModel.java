@@ -52,7 +52,7 @@ public class LevelModel extends Model {
         return levels;
     }
 
-    public void update(LevelModel levelModel) {
+    public void update(LevelModel levelModel,int level_id) {
         Session session = factory.openSession();
         session.beginTransaction();
         session.update(levelModel);

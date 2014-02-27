@@ -4,6 +4,7 @@ import SaleCD.model.HeaderModel;
 import SaleCD.model.ManageGeneralModel;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
@@ -19,10 +20,24 @@ public class HeaderAction extends IndexAction {
     private List headerList;
     private List manageGeneralList;
     //คอนสตรัคเจ้อ
+    private List headerShowList;
 
     public HeaderAction() {
         headerModel = new HeaderModel();
         manageGeneralModel = new ManageGeneralModel();
+
+        //กำหนดค่าให้dropdownList
+        headerShowList = new ArrayList();
+        headerShowList.add("Block");
+        headerShowList.add("None");
+    }
+
+    public List getHeaderShowList() {
+        return headerShowList;
+    }
+
+    public void setHeaderShowList(List headerShowList) {
+        this.headerShowList = headerShowList;
     }
 
     public ManageGeneralModel getManageGeneralModel() {
@@ -66,12 +81,13 @@ public class HeaderAction extends IndexAction {
     }
 
     public String index() {
+        manageGeneralList = manageGeneralModel.list();
         headerList = headerModel.list();
         return "SUCCESS";
     }
 
     public String save() throws IOException {
-       header_id = headerModel.getHeader_id();
+        header_id = headerModel.getHeader_id();
         if (header_id == 0) {
             headerModel.save(headerModel);
         } else {

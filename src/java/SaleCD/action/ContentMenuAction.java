@@ -2,19 +2,34 @@ package SaleCD.action;
 
 import SaleCD.model.ContentMenuModel;
 import SaleCD.model.ManageGeneralModel;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ContentMenuAction {
+public class ContentMenuAction extends IndexAction {
 
     private int content_menu_id;
     private List contentMenuList;
     private ContentMenuModel contentMenuModel;
     private List manageGeneralList;
     private ManageGeneralModel manageGeneralModel;
+    private List contentMenuShowList;
 
     public ContentMenuAction() {
         contentMenuModel = new ContentMenuModel();
         manageGeneralModel = new ManageGeneralModel();
+
+        //เพิ่มข้อมูลใส่list เเล้วเอาไปใส่dropdown
+        contentMenuShowList = new ArrayList();
+        contentMenuShowList.add("Block");
+        contentMenuShowList.add("None");
+    }
+
+    public List getContentMenuShowList() {
+        return contentMenuShowList;
+    }
+
+    public void setContentMenuShowList(List contentMenuShowList) {
+        this.contentMenuShowList = contentMenuShowList;
     }
 
     public List getManageGeneralList() {
@@ -58,6 +73,7 @@ public class ContentMenuAction {
     }
 
     public String index() {
+        manageGeneralList = manageGeneralModel.list();
         contentMenuList = contentMenuModel.list();
         return "SUCCESS";
     }
@@ -65,12 +81,14 @@ public class ContentMenuAction {
     public String delete() {
         contentMenuModel.delete(content_menu_id);
         contentMenuList = contentMenuModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
     public String edit() {
         contentMenuModel = contentMenuModel.find(content_menu_id);
         contentMenuList = contentMenuModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
@@ -79,9 +97,10 @@ public class ContentMenuAction {
         if (content_menu_id == 0) {
             contentMenuModel.save(contentMenuModel);
         } else {
-            contentMenuModel.update(contentMenuModel,content_menu_id);
+            contentMenuModel.update(contentMenuModel, content_menu_id);
             setContent_menu_id(0);
         }
+        contentMenuList = contentMenuModel.list();
         manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
