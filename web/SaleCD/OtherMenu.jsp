@@ -10,7 +10,7 @@
                 <s:hidden name="otherMenuModel.other_menu_id" />
                 <table width="70%" align="center">
                     <tr>
-                        <td align="right" width="165px">การเเสดง : </td>
+                        <td align="right" width="180px">การเเสดง : </td>
                         <td class="form-group has-success">
                           <s:select cssClass="form-control" name="otherMenuModel.shows" list="otherMenuShowList"  style="height: 40px" />
                         </td>

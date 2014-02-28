@@ -2,6 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
+<!--เรียกใช้งาน manageGeneralRow ก็เพราะว่า ในหน้าindex.jsp มีการเอา manageGeneralListมาใช้งาน หน้านี้เป็นส่วนcontentของmanageGeneralList-->
 <div class = "panel-heading" style="font-size:  ${manageGeneralRow.contentMenuModel.font_size_header}; font-family : ${manageGeneralRow.contentMenuModel.font_name}; font-style:  ${manageGeneralRow.contentMenuModel.font_style}; font-weight: ${manageGeneralRow.contentMenuModel.font_weight_header}; color: ${manageGeneralRow.contentMenuModel.font_color_header};background-color: ${manageGeneralRow.contentMenuModel.background_color_header};" ><img src="image/home.png" width="35" height="35"><a href="HomeIndex" > หน้าหลัก </a><img src="image/right.png" width="35" height="35"><img src="image/manageGeneral.png" width="35" height="35"><a href="ManageGeneralIndex" > ตั้งค่าทั่วไป </a><img src="image/right.png" width="35" height="35"><img src="image/u.png" width="35" height="35"> ส่วนเมนูผู้ใช้งาน</div>
 <div class = "panel-body" >
     <div class="bs-example">
@@ -10,7 +11,7 @@
                 <s:hidden name="userMenuModel.user_menu_id" />
                 <table width="70%" align="center">
                     <tr>
-                        <td align="right" width="165px">การเเสดง : </td>
+                        <td align="right" width="180px">การเเสดง : </td>
                         <td class="form-group has-success">
                           <s:select cssClass="form-control" name="userMenuModel.shows" list="userMenuShowList"  style="height: 40px" />
                         </td>

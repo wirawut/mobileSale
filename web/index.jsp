@@ -70,7 +70,7 @@
 
                     </div>
                     <div class="col-md-9">
-                        <div class="panel panel-default" style="border-color: ${manageGeneralRow.contentMenuModel.border_color} ;border-style: ${manageGeneralRow.contentMenuModel.border_style} ;display: ${manageGeneralRow.contentMenuModel.shows};">
+                        <div class="panel panel-default" style="border-color: ${manageGeneralRow.contentMenuModel.border_color} ;border-style: ${manageGeneralRow.contentMenuModel.border_style} ;display: ${manageGeneralRow.contentMenuModel.shows};font-size: ${manageGeneralRow.contentMenuModel.font_size_detail}; font-family: ${manageGeneralRow.contentMenuModel.font_name};font-style: ${manageGeneralRow.contentMenuModel.font_style};font-weight: ${manageGeneralRow.contentMenuModel.font_weight_detail};color: ${manageGeneralRow.contentMenuModel.font_color_detail} ; background-color: ${manageGeneralRow.contentMenuModel.background_color_detail} ;">
                             <s:if test="url!= null">
                                 <jsp:include page="${url}" />
                             </s:if>

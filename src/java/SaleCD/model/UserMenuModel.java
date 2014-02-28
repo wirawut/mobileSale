@@ -150,7 +150,6 @@ public class UserMenuModel extends Model {
         session.close();
         return userMenus;
     }
-
     public void delete(int user_menu_id) {
         Session session = factory.openSession();
         session.beginTransaction();
@@ -159,7 +158,6 @@ public class UserMenuModel extends Model {
         session.getTransaction().commit();
         session.close();
     }
-
     public void save(UserMenuModel userMenuModel) {
         Session session = factory.openSession();
         session.beginTransaction();

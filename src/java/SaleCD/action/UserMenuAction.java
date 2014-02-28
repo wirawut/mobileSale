@@ -10,7 +10,7 @@ public class UserMenuAction extends IndexAction {
     private int user_menu_id;
     private UserMenuModel userMenuModel;
     private List userMenuList;
-    private List manageGeneraList;
+    private List manageGeneralList;
     private ManageGeneralModel manageGeneralModel;
     private List userMenuShowList;
 
@@ -22,14 +22,6 @@ public class UserMenuAction extends IndexAction {
         userMenuShowList = new ArrayList();
         userMenuShowList.add("Block");
         userMenuShowList.add("None");
-    }
-
-    public List getUserMenuShowList() {
-        return userMenuShowList;
-    }
-
-    public void setUserMenuShowList(List userMenuShowList) {
-        this.userMenuShowList = userMenuShowList;
     }
 
     public int getUser_menu_id() {
@@ -56,12 +48,12 @@ public class UserMenuAction extends IndexAction {
         this.userMenuList = userMenuList;
     }
 
-    public List getManageGeneraList() {
-        return manageGeneraList;
+    public List getManageGeneralList() {
+        return manageGeneralList;
     }
 
     public void setManageGeneraList(List manageGeneraList) {
-        this.manageGeneraList = manageGeneraList;
+        this.manageGeneralList = manageGeneraList;
     }
 
     public ManageGeneralModel getManageGeneralModel() {
@@ -72,16 +64,24 @@ public class UserMenuAction extends IndexAction {
         this.manageGeneralModel = manageGeneralModel;
     }
 
+    public List getUserMenuShowList() {
+        return userMenuShowList;
+    }
+
+    public void setUserMenuShowList(List userMenuShowList) {
+        this.userMenuShowList = userMenuShowList;
+    }
+
     public String index() {
         userMenuList = userMenuModel.list();
-        manageGeneraList = manageGeneralModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
     public String delete() {
         userMenuModel.delete(user_menu_id);
         userMenuList = userMenuModel.list();
-        manageGeneraList = manageGeneralModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 
@@ -93,7 +93,7 @@ public class UserMenuAction extends IndexAction {
             userMenuModel.update(userMenuModel, user_menu_id);
             setUser_menu_id(0);
         }
-        manageGeneraList = manageGeneralModel.list();
+        manageGeneralList = manageGeneralModel.list();
         userMenuList = userMenuModel.list();
         return "SUCCESS";
     }
@@ -101,7 +101,7 @@ public class UserMenuAction extends IndexAction {
     public String edit() {
         userMenuModel = userMenuModel.find(user_menu_id);
         userMenuList = userMenuModel.list();
-        manageGeneraList = manageGeneralModel.list();
+        manageGeneralList = manageGeneralModel.list();
         return "SUCCESS";
     }
 }

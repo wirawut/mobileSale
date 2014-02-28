@@ -18,7 +18,7 @@
         </action>
         <action name="CompanySave" class="SaleCD.action.CompanyAction" method="save">
             <result name="SUCCESS">index.jsp</result>
-            <param name="url">/SaleCD/Company.jsp</param>
+            <param name="url">/SaleCD/ManageBasic.jsp</param>
         </action>
         <!--unit-->
         <action name="UnitIndex" class="SaleCD.action.UnitAction" method="index">
@@ -30,8 +30,9 @@
             <param name="url">/SaleCD/Unit.jsp</param>
         </action>
         <action name="UnitEdit" class="SaleCD.action.UnitAction" method="edit">
-            <result name="SUCCESS">index.jsp</result>
-            <param name="url">/SaleCD/UnitForm.jsp</param>
+            <result name="SUCCESS" type="redirect">
+                <param name="location">UnitIndex</param>
+            </result>
         </action>
         <action name="UnitAdd" class="SaleCD.action.UnitAction" method="index">
             <result name="SUCCESS">index.jsp</result>
@@ -119,7 +120,7 @@
             <result name ="SUCCESS" >index.jsp</result>
             <param name="url" >/SaleCD/MainMenu.jsp</param>
         </action>
-       <action name="MainMenuSave" class="SaleCD.action.MainMenuAction" method="save">
+        <action name="MainMenuSave" class="SaleCD.action.MainMenuAction" method="save">
             <result name="SUCCESS" type="redirect">
                 <param name="location">ManageGeneralIndex</param>
             </result>
@@ -157,7 +158,7 @@
             <param name="url">/SaleCD/ManageGeneral.jsp</param>
         </action>
         <!--ContentMenu-->
-         <action name="ContentMenuIndex" class="SaleCD.action.ContentMenuAction" method="index">
+        <action name="ContentMenuIndex" class="SaleCD.action.ContentMenuAction" method="index">
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/ContentMenu.jsp</param>
         </action>

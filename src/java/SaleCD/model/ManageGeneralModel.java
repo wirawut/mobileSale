@@ -74,6 +74,7 @@ public class ManageGeneralModel extends Model {
     public void setUserMenuModel(UserMenuModel userMenuModel) {
         this.userMenuModel = userMenuModel;
     }
+
     public ContentMenuModel getContentMenuModel() {
         return contentMenuModel;
     }
