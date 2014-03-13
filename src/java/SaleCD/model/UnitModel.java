@@ -75,7 +75,6 @@ public class UnitModel extends Model {
         session.update(unitModel);
         session.getTransaction().commit();
         session.close();
-
     }
 
     public void delete(int unit_id) {

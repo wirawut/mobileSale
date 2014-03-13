@@ -8,6 +8,8 @@
         <div class="panel-group" id="accordion" >
 
             <s:form action="LevelSave" theme="simple">
+                <!--ไอดีที่มาจาก editที่เลือกเอาไว้ส่งไปตอนกดปุ่มบันทึก-->
+                <s:hidden name="levelModel.level_id" />
                 <table width="60%" align="center">
                     <tr>
                         <td align="right">ระดับ : </td>

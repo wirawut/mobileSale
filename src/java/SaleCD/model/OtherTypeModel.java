@@ -51,4 +51,39 @@ public class OtherTypeModel extends Model {
         session.close();
         return otherTyps;
     }
+
+    public OtherTypeModel find(int other_type_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        OtherTypeModel otherTypes = (OtherTypeModel) session.get(OtherTypeModel.class, other_type_id);
+        session.getTransaction().commit();
+        session.close();
+        return otherTypes;
+    }
+
+    public void delete(int other_type_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        OtherTypeModel otherTypeModel = (OtherTypeModel) session.get(OtherTypeModel.class, other_type_id);
+        session.delete(otherTypeModel);
+        session.getTransaction().commit();
+        session.close();
+
+    }
+
+    public void update(OtherTypeModel otherTypeModel, int other_type_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.update(otherTypeModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void save(OtherTypeModel otherTypeModel) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(otherTypeModel);
+        session.getTransaction().commit();
+        session.close();
+    }
 }

@@ -67,6 +67,7 @@ public class UnitAction extends IndexAction {
 
     public String save() {
         Date date = new Date();
+        unit_id = unitModel.getUnit_id();
         if (unit_id == 0) {
             unitModel.setDate(date);
             unitModel.save(unitModel);

@@ -12,7 +12,7 @@
     </a> <br/><br/>
     <div class="table-responsive" style=" height: 370px; overflow: auto; ">
         <table class="table table-hover table-bordered table-striped table-responsive" >
-            <thead >
+            <thead>
                 <tr>
                     <th width="3%"><center>ลำดับ</center></th>
             <th width="15%">ระดับผู้ใช้งาน</th>

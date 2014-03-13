@@ -51,4 +51,38 @@ public class SimTypeModel extends Model {
         session.close();
         return simTypes;
     }
+
+    public SimTypeModel find(int sim_type_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        SimTypeModel simTypes = (SimTypeModel) session.get(SimTypeModel.class, sim_type_id);
+        session.getTransaction().commit();
+        session.close();
+        return simTypes;
+    }
+
+    public void save(SimTypeModel simTypeModel) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(simTypeModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void update(SimTypeModel simTypeModel, int sim_type_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.update(simTypeModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void delete(int sim_type_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        SimTypeModel simTypeModel = (SimTypeModel) session.get(SimTypeModel.class, sim_type_id);
+        session.delete(simTypeModel);
+        session.getTransaction().commit();
+        session.close();
+    }
 }

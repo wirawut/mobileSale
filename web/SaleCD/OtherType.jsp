@@ -7,7 +7,7 @@
 </script>
 <div class = "panel-heading" style="font-size:  ${manageGeneralRow.contentMenuModel.font_size_header}; font-family : ${manageGeneralRow.contentMenuModel.font_name}; font-style:  ${manageGeneralRow.contentMenuModel.font_style}; font-weight: ${manageGeneralRow.contentMenuModel.font_weight_header}; color: ${manageGeneralRow.contentMenuModel.font_color_header};background-color: ${manageGeneralRow.contentMenuModel.background_color_header};"><img src="image/home.png" width="35" height="35"><a href="HomeIndex" > หน้าหลัก </a><img src="image/right.png" width="35" height="35"><img src="image/manageBasic.png" width="35" height="35"> <a href="ManageBasicIndex" > ตั้งค่าพื้นฐาน </a> <img src="image/right.png" width="35" height="35"> <img src="image/product_type.png" width="35" height="35"> <a href="ProductTypeIndex" > ประเภทสินค้า </a> <img src="image/right.png" width="35" height="35"> <img src="image/others.png" width="35" height="35"> อุปกรณ์เสริม</div>
 <div class="panel-body">
-    <a class="btn btn-info" href="UnitAdd">
+    <a class="btn btn-info" href="OtherTypeAdd">
         <img src="image/add.png" width="35" height="35"> เพิ่ม
     </a> <br/><br/>
     <div class="table-responsive" style=" height: 370px; overflow: auto; ">
@@ -15,9 +15,9 @@
             <thead >
                 <tr>
                     <th width="3%"><center>ลำดับ</center></th>
-            <th width="15%">ประเภท</th>
+            <th width="13%">ประเภท</th>
             <th width="40%">รายละเอียด</th>
-            <th width="12%">วันที่บันทึก</th>
+            <th width="14%">วันที่บันทึก</th>
             <th width="30%"></th>
             </tr>
             </thead>
@@ -33,7 +33,7 @@
                             <a class="btn btn-info" href="OtherTypeEdit?other_type_id=${otherTypeRow.other_type_id}">
                                 <img src="image/edit.png" width="35" height="35"> แก้ไข
                             </a>
-                            <a class="btn btn-info" href=OtherTypeDelete?other_type_id=${otherTypeRow.other_type_id}" >
+                            <a class="btn btn-info" href="OtherTypeDelete?other_type_id=${otherTypeRow.other_type_id}" >
                                 <img src="image/delete.png" width="35" height="35"> ลบ
                             </a>
                         </td>

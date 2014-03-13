@@ -67,6 +67,7 @@ public class LevelAction extends IndexAction {
 
     public String save() {
         Date date = new Date();
+        level_id = levelModel.getLevel_id();
         if (level_id == 0) {
             levelModel.setDate_save(date);
             levelModel.save(levelModel);

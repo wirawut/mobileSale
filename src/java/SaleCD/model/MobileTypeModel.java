@@ -51,4 +51,37 @@ public class MobileTypeModel extends Model {
         session.close();
         return mobileTypes;
     }
+
+    public MobileTypeModel find(int mobile_type_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        MobileTypeModel mobileTypeModel = (MobileTypeModel) session.get(MobileTypeModel.class, mobile_type_id);
+        session.getTransaction().commit();
+        session.close();
+        return mobileTypeModel;
+    }
+
+    public void save(MobileTypeModel mobileTypeModel) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(mobileTypeModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void update(MobileTypeModel mobileTypeModel, int mobile_type_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.update(mobileTypeModel);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void delete(int mobile_type_id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.delete(session.get(MobileTypeModel.class, mobile_type_id));
+        session.getTransaction().commit();
+        session.close();
+    }
 }
