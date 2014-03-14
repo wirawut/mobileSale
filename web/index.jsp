@@ -2,7 +2,7 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
+    <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="image/mobile.png" rel="shortcut icon" type="image/x-icon" />
         <title>โปรแกรมบริหารร้านโทรศัพท์มือถือ</title>
