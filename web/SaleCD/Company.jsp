@@ -21,7 +21,7 @@
                     <tr>
                         <td align="right">ที่อยู่ : </td>
                         <td class="form-group has-success">
-                            <s:textfield name="companyModel.company_address" cssClass="form-control" cssStyle="height: 40px;" />
+                            <s:textarea name="companyModel.company_address" cssClass="form-control" cssStyle="height: 120px;" />
                         </td>
                     </tr>
                     <tr><td></td></tr>

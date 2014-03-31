@@ -11,6 +11,11 @@
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/Home.jsp</param>
         </action>
+        <!--SaleMobileIndex-->
+        <action name="SaleMobileIndex" class="SaleCD.action.SaleMobileAction" method="index">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/SaleMobile.jsp</param>
+        </action>
         <!--company-->
         <action name="CompanyIndex" class="SaleCD.action.CompanyAction" method="index">
             <result name="SUCCESS">index.jsp</result>
@@ -170,11 +175,101 @@
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/ManageGeneral.jsp</param>
         </action>
-        <!--stock-->
-        <action name="StockIndex" class="SaleCD.action.StockAction" method="index">
+        <!--product-->
+        <action name="ProductIndex" class="SaleCD.action.ProductAction" >
             <result name="SUCCESS">index.jsp</result>
-            <param name="url">/SalCD/Stock.jsp</param>
+            <param name="url">/SaleCD/Product.jsp</param>
         </action>
+        <!--SaleMobile จะเรียกใช้ข้อมูลเดียวกันกับ Mobile-->
+        <action name="SaleMobileIndex" class="SaleCD.action.MobileAction" method="index">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/SaleMobile.jsp</param>
+        </action>
+        
+        <!--SaleSim จะเรียกใช้ข้อมูลเดียวกันกับ Sim-->
+        <action name="SaleSimIndex" class="SaleCD.action.SimAction" method="index">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/SaleSim.jsp</param>
+        </action>
+        
+        <!--SaleMobile จะเรียกใช้ข้อมูลเดียวกันกับ Mobile-->
+        <action name="SaleOtherIndex" class="SaleCD.action.OtherAction" method="index">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/SaleOther.jsp</param>
+        </action>
+        
+        <!--Forecast-->
+        <action name="ForecastIndex" class="SaleCD.action.ForecastAction" method="index">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/Forecast.jsp</param>
+        </action>
+        
+        <!--mobile-->
+        <action name="MobileAdd" class="SaleCD.action.MobileAction" method="index">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/MobileForm.jsp</param>
+        </action>
+        <action name="MobileSave" class="SaleCD.action.MobileAction" method="save">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/Mobile.jsp</param>
+        </action>
+        <action name="MobileEdit" class="SaleCD.action.MobileAction" method="edit">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/MobileForm.jsp</param>
+        </action>
+        <action name="MobileDelete" class="SaleCD.action.MobileAction" method="delete">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/Mobile.jsp</param>
+        </action>
+        <action name="MobileIndex" class="SaleCD.action.MobileAction" method="index">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/Mobile.jsp</param>
+        </action>
+        
+        <!--other-->
+        <action name="OtherAdd" class="SaleCD.action.OtherAction" method="index">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/OtherForm.jsp</param>
+        </action>
+        <action name="OtherSave" class="SaleCD.action.OtherAction" method="save">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/Other.jsp</param>
+        </action>
+        <action name="OtherEdit" class="SaleCD.action.OtherAction" method="edit">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/OtherForm.jsp</param>
+        </action>
+        <action name="OtherDelete" class="SaleCD.action.OtherAction" method="delete">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/Other.jsp</param>
+        </action>
+        <action name="OtherIndex" class="SaleCD.action.OtherAction" method="index">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/Other.jsp</param>
+        </action>
+        
+        <!--sim-->
+        <action name="SimAdd" class="SaleCD.action.SimAction" method="index">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/SimForm.jsp</param>
+        </action>
+        <action name="SimSave" class="SaleCD.action.SimAction" method="save">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/Sim.jsp</param>
+        </action>
+        <action name="SimEdit" class="SaleCD.action.SimAction" method="edit">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/SimForm.jsp</param>
+        </action>
+        <action name="SimDelete" class="SaleCD.action.SimAction" method="delete">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/Sim.jsp</param>
+        </action>
+        <action name="SimIndex" class="SaleCD.action.SimAction" method="index">
+            <result name="SUCCESS" >index.jsp</result>
+            <param name="url">/SaleCD/Sim.jsp</param>
+        </action>
+        
         <!--manageBasic-->
         <action name="ManageBasicIndex" class="SaleCD.action.ManageBasicAction" method="index">
             <result name="SUCCESS">index.jsp</result>
@@ -233,7 +328,7 @@
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/OtherType.jsp</param>
         </action>
-            <action name="OtherTypeSave" class="SaleCD.action.OtherTypeAction" method="save">
+        <action name="OtherTypeSave" class="SaleCD.action.OtherTypeAction" method="save">
             <result name ="SUCCESS" >index.jsp</result>
             <param name="url" >/SaleCD/OtherType.jsp</param>
         </action>
@@ -249,12 +344,12 @@
             <result name ="SUCCESS" >index.jsp</result>
             <param name="url" >/SaleCD/OtherTypeForm.jsp</param>
         </action>
-         <!--Customer-->
+        <!--Customer-->
         <action name="CustomerIndex" class="SaleCD.action.CustomerAction" method="index">
             <result name="SUCCESS">index.jsp</result>
             <param name="url">/SaleCD/Customer.jsp</param>
         </action>
-            <action name="CustomerSave" class="SaleCD.action.CustomerAction" method="save">
+        <action name="CustomerSave" class="SaleCD.action.CustomerAction" method="save">
             <result name ="SUCCESS" >index.jsp</result>
             <param name="url" >/SaleCD/Customer.jsp</param>
         </action>
@@ -269,6 +364,10 @@
         <action name="CustomerAdd" class="SaleCD.action.CustomerAction" method="index">
             <result name ="SUCCESS" >index.jsp</result>
             <param name="url" >/SaleCD/CustomerForm.jsp</param>
+        </action>
+        <action name="SaleMobileSaveMemory" class="SaleCD.action.SaleMobileAction" method="saveMemory">
+            <result name="SUCCESS">index.jsp</result>
+            <param name="url">/SaleCD/SaleMobile.jsp</param>
         </action>
     </package>
 </struts>

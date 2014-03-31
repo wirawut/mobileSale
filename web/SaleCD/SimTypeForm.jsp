@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
-<div class = "panel-heading" style="font-size:  ${manageGeneralRow.contentMenuModel.font_size_header}; font-family : ${manageGeneralRow.contentMenuModel.font_name}; font-style:  ${manageGeneralRow.contentMenuModel.font_style}; font-weight: ${manageGeneralRow.contentMenuModel.font_weight_header}; color: ${manageGeneralRow.contentMenuModel.font_color_header};background-color: ${manageGeneralRow.contentMenuModel.background_color_header};" > <img src="image/home.png" width="35" height="35"><a href="HomeIndex" > หน้าหลัก </a><img src="image/right.png" width="35" height="35"><img src="image/manageBasic.png" width="35" height="35"><a href="ManageBasicIndex" > ตั้งค่าพื้นฐาน </a><img src="image/right.png" width="35" height="35"><img src="image/unit.png" width="35" height="35"> <a href="UnitIndex" > หน่วยนับสินค้า </a><img src="image/manage.png" width="35" height="35"> จัดการหน่วยนับสินค้า</div>
+<div class = "panel-heading" style="font-size:  ${manageGeneralRow.contentMenuModel.font_size_header}; font-family : ${manageGeneralRow.contentMenuModel.font_name}; font-style:  ${manageGeneralRow.contentMenuModel.font_style}; font-weight: ${manageGeneralRow.contentMenuModel.font_weight_header}; color: ${manageGeneralRow.contentMenuModel.font_color_header};background-color: ${manageGeneralRow.contentMenuModel.background_color_header};"><img src="image/home.png" width="35" height="35"> <a href="HomeIndex" > หน้าหลัก </a><img src="image/right.png" width="35" height="35"> <img src="image/manageBasic.png" width="35" height="35"> <a href="ManageBasicIndex" > ตั้งค่าพื้นฐาน </a> <img src="image/right.png" width="35" height="35"> <img src="image/product_type.png" width="35" height="35"> <a href="ProductTypeIndex" > ประเภทสินค้า </a> <img src="image/right.png" width="35" height="35"> <img src="image/sim.png" width="35" height="35"> <a href="SimTypeIndex">ประเภทซิมการ์ด</a> <img src="image/right.png" width="35" height="35"> <img src="image/manage.png" width="35" height="35"> จัดการประเภทซิมการ์ด</div>
 <div class = "panel-body"  id="showManageGeneral">
     <div class="bs-example">
         <div class="panel-group" id="accordion" >
@@ -20,7 +20,7 @@
                     <tr>
                         <td align="right">รายละเอียด : </td>
                         <td class="form-group has-success">
-                            <s:textfield name="simTypeModel.detail" cssClass="form-control" cssStyle="height: 40px;" />
+                            <s:textarea name="simTypeModel.detail" cssClass="form-control" cssStyle="height: 120px;" />
                         </td>
                     </tr>
                     <tr><td></td></tr>

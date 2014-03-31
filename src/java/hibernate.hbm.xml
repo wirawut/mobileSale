@@ -60,6 +60,7 @@
         <property column="date" name="date" type="date"/>
     </class>
     
+    
     <!--otherType-->
     <class name="SaleCD.model.OtherTypeModel" table="tb_other_type">
         <id column="other_type_id" name="other_type_id" type="int">
@@ -70,6 +71,66 @@
         <property column="date" name="date" type="date"/>
     </class>
     
+    <!--mobile-->
+    <class name="SaleCD.model.MobileModel" table="tb_mobile">
+        <id column="mobile_id" name="mobile_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="mobile" name="mobile" type="string"/>
+        <property column="image" name="image" type="string"/>
+        <property column="price_buy" name="price_buy" type="int"/>
+        <property column="price_sale" name="price_sale" type="int"/>
+        <property column="quantity" name="quantity" type="int"/>
+        <property column="date" name="date" type="date"/>
+        <property column="detail" name="detail" type="string"/>
+        
+        <many-to-one class="SaleCD.model.UnitModel" column="unit_id" fetch="select" lazy="false" name="unitModel"/>
+        <many-to-one class="SaleCD.model.MobileTypeModel" column="mobile_type_id" fetch="select" lazy="false" name="mobileTypeModel"/>
+    </class>
+    
+    <!--sim-->
+    <class name="SaleCD.model.SimModel" table="tb_sim">
+        <id column="sim_id" name="sim_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="sim" name="sim" type="string"/>
+        <property column="image" name="image" type="string"/>
+        <property column="price_buy" name="price_buy" type="int"/>
+        <property column="price_sale" name="price_sale" type="int"/>
+        <property column="quantity" name="quantity" type="int"/>
+        <property column="date" name="date" type="date"/>
+        <property column="detail" name="detail" type="string"/>
+        
+        <many-to-one class="SaleCD.model.UnitModel" column="unit_id" fetch="select" lazy="false" name="unitModel"/>
+        <many-to-one class="SaleCD.model.SimTypeModel" column="sim_type_id" fetch="select" lazy="false" name="simTypeModel"/>
+    </class>
+    
+    <!--other-->
+    <class name="SaleCD.model.OtherModel" table="tb_other">
+        <id column="other_id" name="other_id" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="other" name="other" type="string"/>
+        <property column="image" name="image" type="string"/>
+        <property column="price_buy" name="price_buy" type="int"/>
+        <property column="price_sale" name="price_sale" type="int"/>
+        <property column="quantity" name="quantity" type="int"/>
+        <property column="date" name="date" type="date"/>
+        <property column="detail" name="detail" type="string"/>
+        
+        <many-to-one class="SaleCD.model.UnitModel" column="unit_id" fetch="select" lazy="false" name="unitModel"/>
+        <many-to-one class="SaleCD.model.OtherTypeModel" column="other_type_id" fetch="select" lazy="false" name="otherTypeModel"/>
+    </class>
+    
+     <!--forecast-->
+    <class name="SaleCD.model.ForecastModel" table="tb_forecast">
+        <id column="range" name="range" type="int">
+            <generator class="native"/>
+        </id>
+        <property column="cost" name="cost" type="int"/>
+        <property column="sale" name="sale" type="int"/>
+        <property column="unit" name="unit" type="string"/>
+    </class>
     <!--level-->
     <class name="SaleCD.model.LevelModel" table="tb_level">
         <id column="level_id" name="level_id" type="int">

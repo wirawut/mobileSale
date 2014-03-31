@@ -20,7 +20,7 @@
                     <tr>
                         <td align="right">รายละเอียด : </td>
                         <td class="form-group has-success">
-                            <s:textfield name="unitModel.detail" cssClass="form-control" cssStyle="height: 40px;" />
+                            <s:textarea name="unitModel.detail" cssClass="form-control" cssStyle="height: 120px;" />
                         </td>
                     </tr>
                     <tr><td></td></tr>
